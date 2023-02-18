@@ -24,3 +24,15 @@ def rootPage(request):
 #         return render(request, "index.html", context)
 #     else:
 #         return render(request, "index.html")
+
+# def root(request):
+#     context = {}
+#     if request.method == "POST":
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             context["signup_success"] = True
+#     else:
+#         form = SignUpForm()
+#     context["form"] = form
+
+#     return render(request, "root.html", context)
