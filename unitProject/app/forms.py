@@ -1,14 +1,19 @@
 from django import forms
+from django.forms import ModelForm
+from .models import *
 
 
-class ContactForm(forms.Form):
-    first_name = forms.CharField(max_length=20, required=True)
-    last_name = forms.CharField(max_length=20, required=True)
-    email = forms.EmailField(required=True)
-    message = forms.CharField(max_length=1000, required=True)
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = "__all__"
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(ModelForm):
+    class Meta:
+        model = SignUp
+        fields = "__all__"
+
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
     repeated_password = forms.CharField(widget=forms.PasswordInput)
