@@ -1,18 +1,22 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static " styles.css" %}">
+    <title>Project Game</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="{% static " styles.css" %}">
-  <title>Project Game</title>
-</head>
-
-<body>
-  <h1>Wheel Of Fortune</h1>
-
-</body>
-
+  <body>
+    <h1>Wheel Of Fortune</h1>
+    <a href="{% url 'root' %}">Home</a>
+    {% block content %}
+    <form action="" method="post">
+      {% csrf_token %} {{form.as_p}}
+      <button type="submit">Sign-in</button>
+    </form>
+    {% endblock content %}
+  </body>
 </html>
