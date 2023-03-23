@@ -1,0 +1,8 @@
+{% extends 'index.html' %} {% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <div>{{ form.username.label_tag }} {{ form.username }}</div>
+  <div>{{ form.password.label_tag }} {{ form.password }}</div>
+  <button type="submit">Log in</button>
+</form>
+{% endblock content %}

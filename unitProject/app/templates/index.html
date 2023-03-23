@@ -11,12 +11,16 @@
 
   <body>
     <h1>Wheel Of Fortune</h1>
-    <a href="{% url 'root' %}">Home</a>
+    <ul>
+      <li><a href="{% url 'root' %}">root</a></li>
+      <li><a href="{% url 'contact' %}">contact</a></li>
+      <li><a href="{% url 'login' %}">login</a></li>
+      <li><a href="{% url 'register' %}">register</a></li>
+      <li><a href="{% url 'logout' %}">logout</a></li>
+      <li><a href="{% url 'home' %}">home</a></li>
+    </ul>
     {% block content %}
-    <form action="" method="post">
-      {% csrf_token %} {{form.as_p}}
-      <button type="submit">Sign-in</button>
-    </form>
-    {% endblock content %}
+    <div>{% for user in users %} {{user}} {{user.id}} {% endfor %}</div>
+    contact {{contacts}} {% endblock content %}
   </body>
 </html>
