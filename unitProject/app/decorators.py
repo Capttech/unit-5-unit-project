@@ -14,40 +14,40 @@ def unauthenticated_user(view_func):
     return wrapper_func
 
 
-def allowed_users(allowed_roles=[]):
-    def decorator(view_func):
-        def wrapper_func(request, *args, **kwargs):
+# def allowed_users(allowed_roles=[]):
+#     def decorator(view_func):
+#         def wrapper_func(request, *args, **kwargs):
 
-            group = None
-            if request.user.groups.exists():
-                group = request.user.groups.all()[0].name
+#             group = None
+#             if request.user.groups.exists():
+#                 group = request.user.groups.all()[0].name
 
-            if group in allowed_roles:
-                return view_func(request, *args, **kwargs)
+#             if group in allowed_roles:
+#                 return view_func(request, *args, **kwargs)
 
-            else:
-                return HttpResponseForbidden()
+#             else:
+#                 return HttpResponseForbidden()
 
-        return wrapper_func
+#         return wrapper_func
 
-    return decorator
+#     return decorator
 
 
-def admin_only(view_func):
-    def wrapper_function(request, *args, **kwargs):
-        group = None
-        if request.user.groups.exists():
-            group = request.user.groups.all()[0].name
+# def admin_only(view_func):
+#     def wrapper_function(request, *args, **kwargs):
+#         group = None
+#         if request.user.groups.exists():
+#             group = request.user.groups.all()[0].name
 
-        if group == "customer":
-            return redirect("store")
+#         if group == "profile":
+#             return redirect("home")
 
-        if group == "admin":
-            return view_func(request, *args, **kwargs)
+#         if group == "admin":
+#             return view_func(request, *args, **kwargs)
 
-        return HttpResponseForbidden()
+#         return HttpResponseForbidden()
 
-    return wrapper_function
+#     return wrapper_function
 
 
 # def user_is_customer(view_func):
@@ -64,6 +64,6 @@ def admin_only(view_func):
 #     return wrapper
 
 
-customer_login_required = user_passes_test(
-    lambda u: u.is_authenticated and not u.is_staff, login_url="login"
-)
+# customer_login_required = user_passes_test(
+#     lambda u: u.is_authenticated and not u.is_staff, login_url="login"
+# )

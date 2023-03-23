@@ -1,7 +1,32 @@
 {% extends 'index.html' %} {% block content %}
-<form action="" method="POST">
-  {% csrf_token %} {{form.as_p}}
-  <button type="submit">submit</button>
-</form>
-
+<div class="container">
+  <div class="card">
+    <form method="POST">
+      {% csrf_token %}
+      <ul>
+        <li>
+          <div class="edit_profile">
+            {{ form.name.label_tag }} {{ form.name }}
+          </div>
+        </li>
+        <li>
+          <div class="edit_profile">
+            {{ form.phone.label_tag }} {{ form.phone }}
+          </div>
+        </li>
+        <li>
+          <div class="edit_profile">
+            {{ form.email.label_tag }} {{ form.email }}
+          </div>
+        </li>
+        <li>
+          <div class="edit_profile">
+            {{ form.profile_pic.label_tag }} {{ form.profile_pic }}
+          </div>
+        </li>
+      </ul>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
 {% endblock content %}

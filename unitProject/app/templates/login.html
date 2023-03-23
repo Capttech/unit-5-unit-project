@@ -1,8 +1,22 @@
 {% extends 'index.html' %} {% block content %}
-<form method="POST">
-  {% csrf_token %}
-  <div>{{ form.username.label_tag }} {{ form.username }}</div>
-  <div>{{ form.password.label_tag }} {{ form.password }}</div>
-  <button type="submit">Log in</button>
-</form>
+<div class="container">
+  <div class="card">
+    <form method="POST">
+      {% csrf_token %}
+      <ul>
+        <li>
+          <div class="login">
+            {{ form.username.label_tag }} {{ form.username }}
+          </div>
+        </li>
+        <li>
+          <div class="login">
+            {{ form.password.label_tag }} {{ form.password }}
+          </div>
+        </li>
+      </ul>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
 {% endblock content %}

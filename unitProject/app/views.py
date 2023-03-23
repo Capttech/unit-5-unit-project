@@ -1,4 +1,3 @@
-from app.forms import ContactForm, SignUpForm
 from django.shortcuts import render, redirect
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
@@ -12,48 +11,11 @@ from .decorators import *
 from django.contrib.auth.forms import AuthenticationForm
 
 
-def ContactPage(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            first_name = form.cleaned_data["first_name"]
-            last_name = form.cleaned_data["last_name"]
-            email = form.cleaned_data["email"]
-            message = form.cleaned_data["message"]
-            form.save()
-            context = {
-                "first_name": first_name,
-                "last_name": last_name,
-                "email": email,
-                "message": message,
-            }
-            return render(request, "contact.html", context)
-    else:
-        form = ContactForm()
-
-    context = {"form": form}
-    return render(request, "contact.html", context)
-
-
+@login_required(login_url="login")
 def home(request):
     users = User.objects.all()
-    contacts = Contact.objects.all()
-    context = {"users": users, "contacts": contacts}
+    context = {"users": users}
     return render(request, "index.html", context)
-
-
-def root(request):
-    context = {}
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            context["signup_success"] = True
-            form.save()
-    else:
-        form = SignUpForm()
-    context = {"form": form}
-
-    return render(request, "root.html", context)
 
 
 @unauthenticated_user
@@ -109,5 +71,14 @@ def LogoutUser(request):
 
 
 @login_required(login_url="login")
-def ProfilePage(request, pk):
-    
+def AccountSettings(request):
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+
+    context = {"form": form}
+    return render(request, "profile.html", context)
