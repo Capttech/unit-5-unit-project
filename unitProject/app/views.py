@@ -9,6 +9,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from .decorators import *
 from django.contrib.auth.forms import AuthenticationForm
+from .manager import *
 
 
 @login_required(login_url="login")
@@ -31,6 +32,7 @@ def RegisterPage(request):
             user.groups.add(group)
             Profile.objects.create(
                 user=user,
+                # uid=generateUserId(),
                 name=user.username,
                 email=user.email,
             )
