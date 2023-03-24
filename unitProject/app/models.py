@@ -8,7 +8,10 @@ class Profile(models.Model):
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     profile_pic = models.ImageField(
-        null=True, blank=True, verbose_name="Profile Picture"
+        null=True,
+        blank=True,
+        verbose_name="Profile Picture",
+        default="static/images/profile_pic_green.png",
     )
     date_created = models.DateTimeField(auto_now_add=True)
 

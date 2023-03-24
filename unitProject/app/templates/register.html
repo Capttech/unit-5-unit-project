@@ -1,33 +1,54 @@
 {% extends 'index.html' %} {% block content %}
 <div class="container">
   <div class="card">
-    <form method="POST">
-      {% csrf_token %}
-      <ul>
-        <li>
-          <div class="register">
-            {{ form.username.label_tag }} {{ form.username }}
-          </div>
-        </li>
-        <li>
-          <div class="register">
-            {{ form.email.label_tag }} {{ form.email }}
-          </div>
-        </li>
-        <li>
-          <div class="register">
-            {{ form.password1.label_tag }} {{ form.password1 }}
-          </div>
-        </li>
-        <li>
-          <div class="register">
-            {{ form.password2.label_tag }} {{ form.password2 }}
-          </div>
-        </li>
-      </ul>
-      <button type="submit">Register</button>
-    </form>
-    <div><a href="login">Login</a></div>
+    <h3 class="form_title">Register</h3>
+    <div class="card_body">
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="login">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username..."
+            class="form_input"
+          />
+        </div>
+        <div class="login">
+          <i class="fa fa-envelope"></i>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email..."
+            class="form_input"
+          />
+        </div>
+        <div class="login">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            name="password1"
+            placeholder="Password..."
+            class="form_input"
+          />
+        </div>
+        <div class="login">
+          <i class="fas fa-key"></i>
+          <input
+            type="password"
+            name="password2"
+            placeholder="Confirm Password..."
+            class="form_input"
+          />
+        </div>
+        <button class="submit" type="submit">Register</button>
+      </form>
+      <div class="card_text">
+        <span>Have an Account?</span
+        ><a class="link" href="{% url 'login' %}">Login</a>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock content %}

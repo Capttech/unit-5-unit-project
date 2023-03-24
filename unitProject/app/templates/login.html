@@ -1,23 +1,40 @@
-{% extends 'index.html' %} {% block content %}
+{% extends 'index.html' %} {% load static %} {% block content %}
 <div class="container">
   <div class="card">
-    <form method="POST">
-      {% csrf_token %}
-      <ul>
-        <li>
-          <div class="login">
-            {{ form.username.label_tag }} {{ form.username }}
-          </div>
-        </li>
-        <li>
-          <div class="login">
-            {{ form.password.label_tag }} {{ form.password }}
-          </div>
-        </li>
-      </ul>
-      <button type="submit">Login</button>
-    </form>
-    <div><a href="register">register</a></div>
+    <div class="card_body">
+      <h3 class="form_title">LOGIN</h3>
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="login">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username..."
+            class="form_input"
+          />
+        </div>
+
+        <div class="login">
+          <i class="fas fa-key"></i>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password..."
+            class="form_input"
+          />
+        </div>
+        <button class="submit" type="submit">Login</button>
+      </form>
+    </div>
+    {% for message in messages %}
+    <p id="messages">{{message}}</p>
+    {% endfor %}
+    <div class="card_text">
+      <span>Don't have an Account?</span
+      ><a class="link" href="{% url 'register' %}">Sign Up</a>
+    </div>
   </div>
 </div>
 {% endblock content %}

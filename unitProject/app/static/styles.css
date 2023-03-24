@@ -1,0 +1,22 @@
+.container{
+    background-color: bisque;
+    padding:  2em 0 2em 0;
+   
+}
+.card{
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #333;
+    background-color: rgb(205, 21, 205);
+    align-items: center;
+    justify-content: center;
+    padding: 4em;
+    margin: 2em;
+    max-width: fit-content;
+
+}
+.card .login{
+    padding: .5em;
+    margin: .5em;
+    color: yellow;
+}
