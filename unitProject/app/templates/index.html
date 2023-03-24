@@ -43,4 +43,29 @@
   {% endblock content %}
 </body>
 
-</html>
+{% comment %} </html>
+  <body>
+    <h1>Square Space</h1>
+    <ul>
+      <li><a href="{% url 'login' %}">login</a></li>
+      <li><a href="{% url 'register' %}">register</a></li>
+      <li><a href="{% url 'logout' %}">logout</a></li>
+      <li><a href="{% url 'home' %}">home</a></li>
+      <li><a href="{% url 'profile' %}">profile</a></li>
+    </ul>
+    {% block content %}
+    <div class="container">
+      {% for user in users %}
+      <div class="card">
+        <ul>
+          <li>Username: {{user}}</li>
+          <li>ID: {{user.id}}</li>
+          <li>Email: {{user.email}}</li>
+        </ul>
+      </div>
+      <br />
+      {% endfor %}
+    </div>
+    {% endblock content %}
+  </body>
+</html> {% endcomment %}

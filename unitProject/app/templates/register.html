@@ -49,6 +49,34 @@
         ><a class="link" href="{% url 'login' %}">Login</a>
       </div>
     </div>
+    {% comment %}
+    <form method="POST">
+      {% csrf_token %}
+      <ul>
+        <li>
+          <div class="register">
+            {{ form.username.label_tag }} {{ form.username }}
+          </div>
+        </li>
+        <li>
+          <div class="register">
+            {{ form.email.label_tag }} {{ form.email }}
+          </div>
+        </li>
+        <li>
+          <div class="register">
+            {{ form.password1.label_tag }} {{ form.password1 }}
+          </div>
+        </li>
+        <li>
+          <div class="register">
+            {{ form.password2.label_tag }} {{ form.password2 }}
+          </div>
+        </li>
+      </ul>
+      <button type="submit">Login</button>
+    </form>
+    {% endcomment %}
   </div>
 </div>
 {% endblock content %}
