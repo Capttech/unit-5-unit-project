@@ -1,0 +1,3 @@
+unitProject/app/__pycache__/*
+unitProject/config/__pycache__/*
+unitProject/app/migrations/*
