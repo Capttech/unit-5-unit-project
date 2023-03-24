@@ -28,3 +28,53 @@
     list-style-type: none;
     font-size: 16pt;
 }
+
+* {
+    outline: 1px solid rgb(175,155,5);
+
+}
+
+body,
+html{
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+
+
+
+
+
+
+.nav_menu a {
+    float: left;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 8px 10px;
+    text-decoration: none;
+    margin-left: 13px;
+    font-weight: 600;
+}
+
+
+.nav_menu {
+    overflow: hidden;
+    background-color: rgb(255, 0, 0);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: sticky;
+    top: 0;
+    opacity: 0.5;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+  }
