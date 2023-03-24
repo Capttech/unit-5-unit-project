@@ -20,3 +20,11 @@
     margin: .5em;
     color: yellow;
 }
+.nav_bar{
+    text-align:center;
+}
+.nav_bar li{
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 16pt;
+}
