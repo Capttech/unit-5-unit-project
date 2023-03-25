@@ -15,6 +15,8 @@ urlpatterns = [
     path("add_business/", create_business, name="add_business"),
     path("businesses/", businessesView, name="businesses"),
     path("profile/", profileView, name="profile"),
+    path("medical_office/", medical_office_html, name="medical_office"),
+    path("medical_office/medical_office/home/", homeView, name="home"),
     # ================|bryan's work|=======================#
     path("template/new/", create_template, name="template_create"),
     path("template/<int:pk>/", create_template, name="template_detail"),

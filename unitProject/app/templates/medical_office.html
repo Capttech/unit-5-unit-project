@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -5,18 +6,15 @@
   <title>Unit 5 Project</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="drewstyles.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'drewstyles.css' %}" />
 </head>
 
 <body>
   <header>
-    <h1>Medical Office</h1>
+    <h1 class=medical>Medical Office</h1>
     <nav>
       <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Services</a></li>
-        <li><a href="">About Us</a></li>
-        <li><a href="">Contact Us</a></li>
+        <li><a href="medical_office/home/">Home</a></li>
       </ul>
     </nav>
   </header>
