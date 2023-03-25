@@ -90,13 +90,19 @@ body {
     color: whitesmoke;
     text-decoration: none;
 }
+ 
+.link {
+    width: 100px;
+    height: 40px;
+    background-color: darkgray;
+    color: black;
+}
 
 
 
 
 
-
-
+/* not sure if we need these */
 
 .nav_menu {
     overflow: hidden;
