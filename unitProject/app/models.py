@@ -25,53 +25,53 @@ class Profile(models.Model):
 # ==========| BUSINESS INFORMATION |==========#
 class businessTemplateDatabase(models.Model):
     templateId = models.TextField()
-    business_name = models.TextField(max_length=255)
+    name = models.TextField(max_length=255)
     description = models.TextField(max_length=255)
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
-    business_name = models.ForeignKey(
+    profile = models.ForeignKey(
         Profile, related_name="business", on_delete=models.CASCADE
     )
 
 
 class businessContactInfoDatabase(models.Model):
-    business_email = models.TextField(max_length=255)
+    email = models.TextField(max_length=255)
     phone_number = models.IntegerField(verbose_name="phone number")
     address = models.TextField()
-    owner_contact_info = models.ForeignKey(
+    business = models.ForeignKey(
         businessTemplateDatabase, related_name="contact", on_delete=models.CASCADE
     )
 
 
 # ==========| GENERATED WEBSITES |==========#
-# class generatedWebsites(models.Model):
-#     webId = models.TextField()
-#     templateId = models.TextField()
-#     profile = models.ForeignKey(
-#         Profile, related_name="websites", on_delete=models.CASCADE
-#     )
+class generatedWebsites(models.Model):
+    webId = models.TextField()
+    templateId = models.TextField()
+    profile = models.ForeignKey(
+        Profile, related_name="websites", on_delete=models.CASCADE
+    )
 
 
-# # ====| what bryan is working on below |=========
+# ====| what bryan is working on below |=========
 
-# # ==========| TEMPLATE |==========#
-# class Template(models.Model):
-#     name = models.CharField(max_length=255)
-#     html = models.TextField()
-#     css = models.TextField()
+# ==========| TEMPLATE |==========#
+class Template(models.Model):
+    name = models.CharField(max_length=255)
+    html = models.TextField()
+    css = models.TextField()
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
 
 
-# # ==========| SUBMISSION |==========#
-# class Submission(models.Model):
-#     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     template = models.ForeignKey(Template, on_delete=models.CASCADE)
-#     data = models.JSONField()
+# ==========| SUBMISSION |==========#
+class Submission(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    template = models.ForeignKey(Template, on_delete=models.CASCADE)
+    data = models.JSONField()
 
-#     def __str__(self):
-#         return f"{self.user.name}'s submission for {self.template.name}"
+    def __str__(self):
+        return f"{self.user.name}'s submission for {self.template.name}"
 
 
 # # ====| end of bryan's work |=========
