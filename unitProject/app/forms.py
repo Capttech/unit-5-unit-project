@@ -22,13 +22,14 @@ class ProfileForm(ModelForm):
 
 
 class BusinessForm(forms.ModelForm):
+    creationDate = models.DateField(auto_now_add=True)
+
     class Meta:
         model = businessTemplateDatabase
-        fields = ["name", "description", "type", "missionStatement", "creationDate"]
+        fields = ["name", "description", "type", "missionStatement"]
         widgets = {
             "description": forms.Textarea(attrs={"rows": 4}),
             "missionStatement": forms.Textarea(attrs={"rows": 8}),
-            "creationDate": forms.SelectDateWidget(years=range(1950, 2050)),
         }
 
 
@@ -41,15 +42,15 @@ class BusinessContactInfoForm(forms.ModelForm):
 class SubmissionForm(forms.ModelForm):
     class Meta:
         model = Submission
-        fields = ["business", "template"]
+        fields = ["template"]
 
     business_contact_info = BusinessContactInfoForm()
 
-    def __init__(self, *args, **kwargs):
-        super(SubmissionForm, self).__init__(*args, **kwargs)
-        self.fields["business"].queryset = Business.objects.filter(
-            user=self.instance.user
-        )
+    # def __init__(self, *args, **kwargs):
+    #     super(SubmissionForm, self).__init__(*args, **kwargs)
+    #     self.fields["business"].queryset = Business.objects.filter(
+    #         user=self.instance.user
+    #     )
 
 
 # =============| end of bryan's work |===============#
