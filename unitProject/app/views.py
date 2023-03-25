@@ -139,9 +139,28 @@ def create_business(request):
     return render(request, "create_business.html", context)
 
 
+allTemplates = {}
+allTemplates["drew"] = "medical_office"
+
+
 def view_user_business(request, tempName, webId):
-    if request.method == "GET":
-        pass
+    allGeneratedSites = generatedWebsites.objects.all()
+    allCreatedTemplates = businessTemplateDatabase.objects.all()
+    foundTemplateId = ""
+    foundTemplateData = []
+
+    for site in allGeneratedSites:
+        if site.webId == webId:
+            foundTemplateId = site.templateId
+
+    for template in allCreatedTemplates:
+        if template.id == foundTemplateId:
+            foundTemplateData = template
+
+    if foundTemplateId == "":
+        return render(f"{allTemplates[tempName]}.html")
+    else:
+        return render(f"{allTemplates[tempName]}.html", foundTemplateData)
 
 
 # test to see blog
