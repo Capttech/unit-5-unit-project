@@ -17,7 +17,8 @@
 
 
 <body>
-    <h1 class="header">Dreamwave Website Solutions</h1>
+    <h1 class="header">Dreamwave Web Solutions</h1>
+    
     <div class="navdiv">
         
         <nav class="navbar">
@@ -34,16 +35,23 @@
 
     </div>
 
-    <div class="Welcome">Let us help you build your dream site!</div>
+    
 
    {% block content %}
 
    {% if not user.is_authenticated %}
+   <div class="Welcome">Let us help you build your dream site!</div>
    <div class="get_started_card">
    <button class="get_started"><a href="{% url "register" %}">Get Started</a></button>
    </div>
    {% endif %}
-    
+
+   <div class="splash_div">
+   <p class="spash_statement">At Dreamwave Web Solutions, we specialize in providing fully-featured, comprehensive web solutions 
+    for businesses and of all types. Whether you run a hotdog stand, manage a Forture 500 company or anything in between, DWS can provide 
+    your business with a much needed web presence to significantly increase your online visibility. We provide integrated functionality for
+    SEO as well as a full suite of management tool to make sure that your site or app properly represents your entity's image and scope.</p>
+    </div>
     {% endblock content %}
     
 </body>

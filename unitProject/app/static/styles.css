@@ -80,10 +80,9 @@ body {
 .Welcome {
     font-size: large;
 }
-
 .navb {
     background-color: rgb(103, 54, 124);
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 .navb a {
@@ -92,13 +91,30 @@ body {
 }
  
 .link {
-    width: 100px;
-    height: 40px;
-    background-color: darkgray;
+    width: 130px;
+    height: 50px;
+    background-color: rgb(211, 34, 102);
     color: black;
+    border-radius: 10px;
+    
 }
 
+.link a {
+    text-decoration: none;
+    font-size: 1.2em;
+}
 
+.splash_div {
+    width: 100%;
+    text-align: center;
+
+}
+
+.splash_statement {
+    width: 85%; 
+  display: inline-block;
+
+}
 
 
 
