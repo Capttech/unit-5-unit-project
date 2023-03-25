@@ -36,7 +36,7 @@ class BusinessForm(forms.ModelForm):
 class BusinessContactInfoForm(forms.ModelForm):
     class Meta:
         model = businessContactInfoDatabase
-        fields = ["email", "phone_number", "address"]
+        fields = ["email", "phoneNumber", "address"]
 
 
 class SubmissionForm(forms.ModelForm):

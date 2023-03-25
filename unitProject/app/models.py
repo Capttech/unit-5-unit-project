@@ -36,7 +36,7 @@ class businessTemplateDatabase(models.Model):
 
 class businessContactInfoDatabase(models.Model):
     email = models.TextField(max_length=255)
-    phone_number = models.IntegerField(verbose_name="phone number")
+    phoneNumber = models.IntegerField(verbose_name="phone number")
     address = models.TextField()
     business = models.ForeignKey(
         businessTemplateDatabase, related_name="contact", on_delete=models.CASCADE
