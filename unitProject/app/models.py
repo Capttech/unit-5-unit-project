@@ -27,12 +27,14 @@ class Profile(models.Model):
 
 # ==========| BUSINESS INFORMATION |==========#
 class businessTemplateDatabase(models.Model):
+    templateId = models.TextField()
     name = models.TextField(max_length=255)
     description = models.TextField(max_length=255)
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
-    creationDate = models.DateField()
-    profile = models.ManyToManyField(Profile, related_name="business")
+    profile = models.ForeignKey(
+        Profile, related_name="business", on_delete=models.CASCADE
+    )
 
 
 class businessContactInfoDatabase(models.Model):
@@ -46,7 +48,8 @@ class businessContactInfoDatabase(models.Model):
 
 # ==========| GENERATED WEBSITES |==========#
 class generatedWebsites(models.Model):
-    id = models.TextField()
+    webId = models.TextField()
+    templateId = models.TextField()
     profile = models.ForeignKey(
         Profile, related_name="websites", on_delete=models.CASCADE
     )
