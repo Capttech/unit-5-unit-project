@@ -49,7 +49,7 @@ def RegisterPage(request):
                     request, f"{field}: {', '.join(errors)}", extra_tags="danger"
                 )
 
-    context = {"form": form}
+    context = {"form": form, "messages": messages}
     return render(request, "register.html", context)
 
 
@@ -115,8 +115,12 @@ def templatesView(request):
 
 @login_required
 def businessesView(request):
-    submissions = Submission.objects.filter(profile=request.user.profile)
-    return render(request, "submission_list.html", {"submissions": submissions})
+    if request.user.is_authenticated:
+        submissions = Submission.objects.filter(profile=request.user.profile)
+        # your code to render the page
+    else:
+        # handle the case where the user is not authenticated
+        pass
 
 
 def profileView(request):
