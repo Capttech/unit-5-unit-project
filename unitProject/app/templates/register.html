@@ -1,12 +1,13 @@
 {% extends 'index.html' %} {% block content %}
 <div class="container">
   <div class="card">
-    <h3 class="form_title">Register</h3>
     <div class="card_body">
+      <h3 class="form_title">Register</h3>
+      <br />
       <form method="POST">
         {% csrf_token %}
 
-        <div class="login">
+        <div class="form_field">
           <i class="fas fa-user"></i>
           <input
             type="text"
@@ -15,7 +16,7 @@
             class="form_input"
           />
         </div>
-        <div class="login">
+        <div class="form_field">
           <i class="fa fa-envelope"></i>
           <input
             type="email"
@@ -24,7 +25,7 @@
             class="form_input"
           />
         </div>
-        <div class="login">
+        <div class="form_field">
           <i class="fas fa-lock"></i>
           <input
             type="password"
@@ -33,7 +34,7 @@
             class="form_input"
           />
         </div>
-        <div class="login">
+        <div class="form_field">
           <i class="fas fa-key"></i>
           <input
             type="password"
@@ -44,39 +45,12 @@
         </div>
         <button class="submit" type="submit">Register</button>
       </form>
+      <br />
       <div class="card_text">
         <span>Have an Account?</span
         ><a class="link" href="{% url 'login' %}">Login</a>
       </div>
     </div>
-    {% comment %}
-    <form method="POST">
-      {% csrf_token %}
-      <ul>
-        <li>
-          <div class="register">
-            {{ form.username.label_tag }} {{ form.username }}
-          </div>
-        </li>
-        <li>
-          <div class="register">
-            {{ form.email.label_tag }} {{ form.email }}
-          </div>
-        </li>
-        <li>
-          <div class="register">
-            {{ form.password1.label_tag }} {{ form.password1 }}
-          </div>
-        </li>
-        <li>
-          <div class="register">
-            {{ form.password2.label_tag }} {{ form.password2 }}
-          </div>
-        </li>
-      </ul>
-      <button type="submit">Login</button>
-    </form>
-    {% endcomment %}
   </div>
 </div>
 {% endblock content %}

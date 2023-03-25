@@ -13,9 +13,9 @@
         <h1 class="header">Dreamwave Website Solutions</h1>
         <nav class="navbar">
             <button><a href="{% url "home" %}">Home</a></button>
-            <button><a href="{% url "templates" %}">View templates</a></button>
-            <button><a href="{% url "businesses" %}">Your businesses</a></button>
-            <button><a href="{% url "profile" %}">Profile</a></button>
+            {% comment %} <button><a href="{% url "templates" %}">View templates</a></button>
+            <button><a href="{% url "businesses" %}">Your businesses</a></button> {% endcomment %}
+            <button><a href="{% url "edit_profile" %}">Edit Profile</a></button>
             <button><a href="{% url "logout" %}">Logout</a></button>
 
         </nav>
@@ -24,7 +24,7 @@
 
     <div class="welcome">Let us help you build your dream site!</div>
 
-    <button class="get_started"><a href="{% url "signup" %}">Get Started</a></button>
+    <button class="get_started"><a href="{% url "register" %}">Get Started</a></button>
     
     
     
