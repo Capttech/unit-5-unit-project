@@ -4,6 +4,7 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
+# ========|bryan's work==============#
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
@@ -18,3 +19,37 @@ class ProfileForm(ModelForm):
         widgets = {
             "profile_pic": forms.FileInput(),
         }
+
+
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = businessTemplateDatabase
+        fields = ["name", "description", "type", "missionStatement", "creationDate"]
+        widgets = {
+            "description": forms.Textarea(attrs={"rows": 4}),
+            "missionStatement": forms.Textarea(attrs={"rows": 8}),
+            "creationDate": forms.SelectDateWidget(years=range(1950, 2050)),
+        }
+
+
+class BusinessContactInfoForm(forms.ModelForm):
+    class Meta:
+        model = businessContactInfoDatabase
+        fields = ["email", "phone_number", "address"]
+
+
+class SubmissionForm(forms.ModelForm):
+    class Meta:
+        model = Submission
+        fields = ["business", "template"]
+
+    business_contact_info = BusinessContactInfoForm()
+
+    def __init__(self, *args, **kwargs):
+        super(SubmissionForm, self).__init__(*args, **kwargs)
+        self.fields["business"].queryset = Business.objects.filter(
+            user=self.instance.user
+        )
+
+
+# =============| end of bryan's work |===============#
