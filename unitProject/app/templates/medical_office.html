@@ -1,50 +1,56 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Unit 5 Project</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'drewstyles.css' %}"
+    />
+  </head>
 
-<head>
-  <title>Unit 5 Project</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{% static 'drewstyles.css' %}" />
-</head>
-
-<body>
-  <header>
-    <h1 class=medical>Medical Office</h1>
-    <nav>
-      <ul>
-        <li><a href="medical_office/home/">Home</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section>
-      <h2>Welcome to our Medical Office</h2>
-      <p>We provide quality healthcare services to our patients.</p>
-    </section>
-    <section>
-      <h2>Our Services</h2>
-      <ul>
-        <li>General Medicine</li>
-      </ul>
-    </section>
-    <section>
-      <h2>About Us</h2>
-      <p>We are a team of experienced healthcare professionals dedicated to providing the best medical care to our
-        patients.</p>
-    </section>
-    <section>
-      <h2>Contact Us</h2>
-      <p>Base Camp Coding Acadmy<br>
-        Water Valley, MS<br>
-        Phone: 662:nun:ya:buisness<br>
-        Email: info@BCCA.org</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; Unit 5 Project feturing Bryan, Joesph, Phillp, Drew. All rights reserved.</p>
-  </footer>
-</body>
-
+  <body>
+    <header>
+      <h1 class="medical">Medical Office</h1>
+      <nav>
+        <ul>
+          <li><a href="medical_office/home/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h2>Welcome to our {{object.business.type}}</h2>
+        <p>{{object.business.missionStatement}}</p>
+      </section>
+      <section>
+        <h2>Our Services</h2>
+        <ul>
+          <li>{{object.business.name}} General Medicine</li>
+        </ul>
+      </section>
+      <section>
+        <h2>About Us</h2>
+        <p>{{object.business.description}}</p>
+      </section>
+      <section>
+        <h2>Contact Us</h2>
+        <p>
+          {{object.business.name}}<br />
+          Address: {{object.business.contact.address}}<br />
+          Phone: {{object.business.contact.phoneNumber}}<br />
+          Email: {{object.business.contact.email}}
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>
+        &copy; Unit 5 Project feturing Bryan, Joesph, Phillp, Drew. All rights
+        reserved.
+      </p>
+    </footer>
+  </body>
 </html>
