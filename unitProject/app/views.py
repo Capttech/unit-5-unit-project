@@ -130,7 +130,6 @@ class WebsiteDetailView(DetailView):
     template_name = "website_detail.html"
 
 
-<<<<<<< Updated upstream
 from django.shortcuts import render, redirect
 from .models import Template, Submission
 
@@ -254,9 +253,7 @@ def submission_list(request):
 
 
 # =====| end of bryan work===================#
-=======
 
 # test to see blog
 def BlogPull(request):
     return render(request, "Nav_bar.html")
->>>>>>> Stashed changes
