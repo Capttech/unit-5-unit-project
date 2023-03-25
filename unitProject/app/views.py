@@ -111,19 +111,13 @@ def homeView(request):
     return render(request, "home.html")
 
 
-@login_required
 def templatesView(request):
     return render(request, "template.html")
 
 
-@login_required
 def businessesView(request):
-    if request.user.is_authenticated:
-        submissions = Submission.objects.filter(profile=request.user.profile)
-        # your code to render the page
-    else:
-        # handle the case where the user is not authenticated
-        pass
+    submissions = Submission.objects.filter(profile=request.user.profile)
+    return render(request, "submission_list.html", {"submissions": submissions})
 
 
 def profileView(request):
@@ -140,7 +134,6 @@ from django.shortcuts import render, redirect
 from .models import Template, Submission
 
 
-# @login_required
 def form_submission(request):
     if request.method == "POST":
         # Get data from the form
@@ -185,7 +178,6 @@ def create_template(request):
         return render(request, "create_template.html")
 
 
-@login_required
 def generate_html(request, submission_id):
     # Retrieve the submission object
     submission = get_object_or_404(Submission, pk=submission_id)
@@ -201,25 +193,6 @@ def generate_html(request, submission_id):
 
     # Render the HTML template with the context
     return render(request, template.html_file.name, context)
-
-
-# -----Drew's work-----#
-@login_required
-def medical_office_html(request):
-    if request.method == "POST":
-        template = Template(
-            name=request.POST["name"],
-            description=request.POST["description"],
-            content=request.POST["content"],
-            owner=request.user.profile,
-        )
-        template.save()
-        return redirect("medical_office.html", pk=template.pk)
-    else:
-        return render(request, "home.html")
-
-
-# ------End of Drew's work-------#
 
 
 @login_required
@@ -240,7 +213,6 @@ def create_business(request):
 # views.py
 
 
-@login_required
 def edit_submission(request, submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
     if request.method == "POST":
@@ -253,14 +225,12 @@ def edit_submission(request, submission_id):
     return render(request, "edit_submission.html", {"form": form})
 
 
-@login_required
 def delete_submission(request, submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
     submission.delete()
     return redirect("submission_list.html")
 
 
-@login_required
 def upload_image(request, submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
     if request.method == "POST":
@@ -271,7 +241,6 @@ def upload_image(request, submission_id):
     return render(request, "upload_image.html", {"submission": submission})
 
 
-@login_required
 def submission_detail(request, submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
     return render(request, "submission_detail.html", {"submission": submission})
