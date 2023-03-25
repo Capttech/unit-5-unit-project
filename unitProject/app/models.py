@@ -25,11 +25,6 @@ class Profile(models.Model):
         return self.name
 
 
-# ==========| MANAGER INFORMATION |==========#
-class managerDatabase(models.Model):
-    userId = models.TextField()
-
-
 # ==========| BUSINESS INFORMATION |==========#
 class businessTemplateDatabase(models.Model):
     name = models.TextField(max_length=255)
@@ -37,10 +32,7 @@ class businessTemplateDatabase(models.Model):
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
     creationDate = models.DateField()
-    manager = models.ManyToManyField(managerDatabase, related_name="business")
-
-    def __str__(self):
-        return self.name
+    profile = models.ManyToManyField(Profile, related_name="business")
 
 
 class businessContactInfoDatabase(models.Model):
@@ -48,19 +40,13 @@ class businessContactInfoDatabase(models.Model):
     phoneNumber = models.IntegerField()
     address = models.TextField()
     business = models.ForeignKey(
-        businessTemplateDatabase,
-        related_name="contact",
-        on_delete=models.CASCADE,
-        null=True,
+        businessTemplateDatabase, related_name="contact", on_delete=models.CASCADE
     )
 
 
 # ==========| GENERATED WEBSITES |==========#
 class generatedWebsites(models.Model):
-    id = models.TextField(primary_key=True)
-    business = models.ForeignKey(
-        businessTemplateDatabase,
-        related_name="websites",
-        on_delete=models.CASCADE,
-        null=True,
+    id = models.TextField()
+    profile = models.ForeignKey(
+        Profile, related_name="websites", on_delete=models.CASCADE
     )
