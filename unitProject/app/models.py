@@ -29,9 +29,6 @@ class businessTemplateDatabase(models.Model):
     description = models.TextField(max_length=255)
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
-    profile = models.ForeignKey(
-        Profile, related_name="business", on_delete=models.CASCADE
-    )
 
 
 class businessContactInfoDatabase(models.Model):
