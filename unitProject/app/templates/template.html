@@ -1,10 +1,16 @@
 <!-- website_detail.html -->
 
-{% extends 'home.html' %} {% block content %}
+{% extends 'home.html' %} {% block content %} {% if business is None %}
+<p class="no_items">You haven't created any businesses yet?</p>
+{% else %}
 <h2>{{ object.business.name }} Website</h2>
 <p>{{ object.business.description }}</p>
 <h3>Contact Information</h3>
 <p>Email: {{ object.business.contact.email }}</p>
 <p>Phone Number: {{ object.business.contact.phoneNumber }}</p>
 <p>Address: {{ object.business.contact.address }}</p>
+{% endif %}
+<button class="link">
+  <a href="{% url 'add_business' %}">Create Business</a>
+</button>
 {% endblock %}

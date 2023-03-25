@@ -17,13 +17,14 @@
 
 
 <body>
+    <h1 class="header">Dreamwave Website Solutions</h1>
     <div class="navdiv">
-        <h1 class="header">Dreamwave Website Solutions</h1>
+        
         <nav class="navbar">
 {% if user.is_authenticated %}
             <p>Welcome, {{ user.profile.user_name }}</p>
             <button><a href="{% url "home" %}">Home</a></button>
-            <button><a href="{% url "templates" %}">View templates</a></button>
+            {% comment %} <button><a href="{% url "templates" %}">View templates</a></button> {% endcomment %}
             <button><a href="{% url "businesses" %}">Your businesses</a></button> 
             <button><a href="{% url "edit_profile" %}">Edit Profile</a></button>
             <button><a href="{% url "logout" %}">Logout</a></button>
@@ -33,7 +34,7 @@
 
     </div>
 
-    <div class="welcome">Let us help you build your dream site!</div>
+    <div class="Welcome">Let us help you build your dream site!</div>
 
    {% block content %}
 
