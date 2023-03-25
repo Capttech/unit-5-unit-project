@@ -282,3 +282,7 @@ def submission_list(request):
 
 
 # =====| end of bryan work===================#
+
+# test to see blog
+def BlogPull(request):
+    return render(request, "Nav_bar.html")
