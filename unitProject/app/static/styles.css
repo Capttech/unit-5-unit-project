@@ -45,6 +45,7 @@ body {
 }
 
 .get_started {
+   
     position: absolute;
     top: 30%;
     right: 35%;
@@ -53,11 +54,21 @@ body {
     background-color: rgb(103, 54, 124);
     font-size: 2em;
     border-radius: 10px;
+    cursor: pointer;
+
+    
+    
     
 }
 
 .get_started a {
     text-decoration: none;
+    height: 100px;
+    width: 200px;
+    text-align: center;
+    padding: 0;
+    pointer-events: auto;
+    
 }
 
 .header {
@@ -68,6 +79,9 @@ body {
 
 .Welcome {
     font-size: large;
+}
+.navb a {
+    color: black;
 }
 
 
