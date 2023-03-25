@@ -29,6 +29,7 @@
     </form>
     <p>Don't have an Account?</p>
     <a class="link" href="{% url 'register' %}">Sign Up</a>
+    {% for message in messages %} {{ message }} {% endfor %}
   </div>
 </div>
 {% endblock content %}
