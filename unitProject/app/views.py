@@ -112,11 +112,6 @@ def homeView(request):
 
 
 @login_required
-def templatesView(request):
-    return render(request, "template.html")
-
-
-@login_required
 def businessesView(request):
     businesses = businessTemplateDatabase.objects.all()
     return render(request, "businesses.html", {"businesses": businesses})
