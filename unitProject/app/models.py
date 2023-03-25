@@ -32,14 +32,14 @@ class businessTemplateDatabase(models.Model):
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
     creationDate = models.DateField()
-    # profile = models.ManyToManyField(Profile, related_name="business")
+    profile = models.ManyToManyField(Profile, related_name="business")
 
 
 class businessContactInfoDatabase(models.Model):
     email = models.TextField(max_length=255)
     phone_number = models.IntegerField(verbose_name="phone number")
     address = models.TextField()
-    business = models.ForeignKey(
+    manager = models.ForeignKey(
         businessTemplateDatabase, related_name="contact", on_delete=models.CASCADE
     )
 
@@ -66,8 +66,8 @@ class Template(models.Model):
 
 # ==========| SUBMISSION |==========#
 class Submission(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    template = models.ForeignKey(Template, on_delete=models.CASCADE)
+    user = models.ForeignKey("Profile", on_delete=models.CASCADE)
+    template = models.ForeignKey("Template", on_delete=models.CASCADE)
     data = models.JSONField()
 
     def __str__(self):
