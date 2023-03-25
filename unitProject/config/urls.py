@@ -19,7 +19,7 @@ urlpatterns = [
     path("medical_office/medical_office/home/", homeView, name="home"),
     path("blog/", BlogPull, name="blog"),
     path(
-        "view_business/<str: tempName>/<str: webId>/",
+        "view_business/<str:tempName>/<str:webId>/",
         view_user_business,
         name="view_business",
     ),
