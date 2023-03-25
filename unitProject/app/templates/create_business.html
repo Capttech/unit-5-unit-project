@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Create a new business template</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required /><br /><br />
+
+  <label for="description">Description:</label>
+  <textarea
+    id="description"
+    name="description"
+    rows="4"
+    cols="50"
+    required
+  ></textarea
+  ><br /><br />
+
+  <label for="type">Type:</label>
+  <input type="text" id="type" name="type" required /><br /><br />
+
+  <label for="missionStatement">Mission Statement:</label>
+  <textarea
+    id="missionStatement"
+    name="missionStatement"
+    rows="10"
+    cols="50"
+    required
+  ></textarea
+  ><br /><br />
+
+  <label for="creationDate">Creation Date:</label>
+  <input
+    type="date"
+    id="creationDate"
+    name="creationDate"
+    required
+  /><br /><br />
+
+  <input type="submit" value="Create Template" />
+</form>
+
+{% endblock %}
