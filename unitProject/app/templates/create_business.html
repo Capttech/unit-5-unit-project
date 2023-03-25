@@ -2,7 +2,7 @@
 
 <h1>Create a new business template</h1>
 
-<form method="post">
+<form method="post" action="{% url 'add_business' %}">
   {% csrf_token %}
   <label for="name">Name:</label>
   <input

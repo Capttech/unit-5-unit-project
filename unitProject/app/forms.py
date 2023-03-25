@@ -37,18 +37,3 @@ class BusinessContactInfoForm(forms.ModelForm):
     class Meta:
         model = businessContactInfoDatabase
         fields = ["email", "phoneNumber", "address"]
-
-
-class SubmissionForm(forms.ModelForm):
-    class Meta:
-        model = Submission
-        fields = ["user", "template"]
-
-    #     business_contact_info = BusinessContactInfoForm()
-
-    def __init__(self, *args, **kwargs):
-        super(SubmissionForm, self).__init__(*args, **kwargs)
-        self.fields["user"].queryset = Profile.objects.filter(user=self.instance.user)
-
-
-# =============| end of bryan's work |===============#
