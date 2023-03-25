@@ -52,7 +52,7 @@
         {% for field, messages in error_messages.items %}
         <! ignore prettier ->
         {% for message in messages %}
-        <li>{{ field.label }}: {{ message }}</li>
+        <li class="message">{{ field.label }}: {{ message }}</li>
         {% endfor %}{% endfor %}
       </ul>
       {% endif %}
