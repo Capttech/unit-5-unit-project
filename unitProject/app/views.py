@@ -16,11 +16,11 @@ from django.contrib import messages
 from django.views.generic import DetailView
 
 
-@login_required(login_url="login")
-def home(request):
-    users = User.objects.all()
-    context = {"users": users}
-    return render(request, "index.html", context)
+# @login_required(login_url="login")
+# def home(request):
+#     users = User.objects.all()
+#     context = {"users": users}
+#     return render(request, "index.html", context)
 
 
 @unauthenticated_user
@@ -36,8 +36,8 @@ def RegisterPage(request):
             user.groups.add(group)
             Profile.objects.create(
                 user=user,
-                name=user.username,
-                email=user.email,
+                user_name=user.username,
+                user_email=user.email,
             )
             login(request, user)
             messages.success(request, "Account was created for " + username)
@@ -109,11 +109,12 @@ def homeView(request):
 
 
 def templatesView(request):
-    ...
+    return render(request, "template.html")
 
 
 def businessesView(request):
-    ...
+    submissions = Submission.objects.filter(profile=request.user.profile)
+    return render(request, "submission_list.html", {"submissions": submissions})
 
 
 def profileView(request):
