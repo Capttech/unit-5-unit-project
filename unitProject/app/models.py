@@ -32,7 +32,7 @@ class businessTemplateDatabase(models.Model):
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
     creationDate = models.DateField()
-    profile = models.ManyToManyField(Profile, related_name="business")
+    # profile = models.ManyToManyField(Profile, related_name="business")
 
 
 class businessContactInfoDatabase(models.Model):
@@ -46,7 +46,7 @@ class businessContactInfoDatabase(models.Model):
 
 # ==========| GENERATED WEBSITES |==========#
 class generatedWebsites(models.Model):
-    id = models.TextField()
+    id = models.TextField(primary_key=True)
     profile = models.ForeignKey(
         Profile, related_name="websites", on_delete=models.CASCADE
     )

@@ -13,12 +13,9 @@ urlpatterns = [
     path("logout/", LogoutUser, name="logout"),
     path("edit_profile/", AccountSettings, name="edit_profile"),
     path("", homeView, name="home"),
-    # path("templates/", templatesView, name="templates"),
-    # path("businesses/", businessesView, name="businesses"),
-    # path("profile/", profileView, name="profile"),
-    # path("signup/", signupView, name="signup"),
-    # path("login/", loginView, name="login"),
-    # path("logout/", logoutView, name="logout"),
+    path("templates/", templatesView, name="templates"),
+    path("businesses/", businessesView, name="businesses"),
+    path("profile/", profileView, name="profile"),
 ]
 
 
