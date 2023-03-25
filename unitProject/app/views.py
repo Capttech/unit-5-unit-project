@@ -23,8 +23,12 @@ from django.views.generic import DetailView
 #     return render(request, "index.html", context)
 
 
+from django.contrib import messages
+
+
 @unauthenticated_user
 def RegisterPage(request):
+    context = {}
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
@@ -43,13 +47,12 @@ def RegisterPage(request):
             messages.success(request, "Account was created for " + username)
             return redirect("home")
         else:
-            # Add error messages to the form fields with errors
-            for field, errors in form.errors.items():
-                messages.error(
-                    request, f"{field}: {', '.join(errors)}", extra_tags="danger"
-                )
+            errors = form.errors.as_data()
+            error_messages = {}
+            for field, error_list in errors.items():
+                error_messages[field] = [error.message for error in error_list]
+                context = {"form": form, "error_messages": error_messages}
 
-    context = {"form": form, "messages": messages}
     return render(request, "register.html", context)
 
 
