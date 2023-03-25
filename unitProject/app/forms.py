@@ -22,6 +22,8 @@ class ProfileForm(ModelForm):
 
 
 class BusinessForm(forms.ModelForm):
+    creationDate = models.DateField(auto_now_add=True)
+
     class Meta:
         model = businessTemplateDatabase
         fields = ["name", "description", "type", "missionStatement"]
