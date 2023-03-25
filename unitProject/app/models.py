@@ -19,7 +19,7 @@ class Profile(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.user_name
 
 
 # ==========| BUSINESS INFORMATION |==========#
@@ -65,13 +65,22 @@ class Template(models.Model):
 
 
 # ==========| SUBMISSION |==========#
+from django.db import models
+from django.contrib.auth.models import User
+
+
 class Submission(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    template = models.ForeignKey(Template, on_delete=models.CASCADE)
-    data = models.JSONField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    template = models.CharField(max_length=100)
+    data = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    # New field
+    profile = models.ForeignKey("app.Profile", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.name}'s submission for {self.template.name}"
+        return f"{self.user.username} - {self.template}"
 
 
 # # ====| end of bryan's work |=========
