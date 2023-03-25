@@ -1,38 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unit 5 Project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  {% block content %}
-  <form method="post">
-    {% csrf_token %}
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br><br>
-    <label for="description">Description:</label>
-    <input type="text" id="description" name="description" required><br><br>
-    <label for="content">Content:</label>
-    <textarea id="content" name="content" required></textarea><br><br>
-    <button type="submit">Save</button>
-  </form>
-  <section>
-    <h2>Contact Us</h2>
-    <p>Base Camp Coding Acadmy<br>
-      Water Valley, MS<br>
-      Phone: 662:nun:ya:buisness<br>
-      Email: info@BCCA.org</p>
-  </section>
+  <header>
+    <h1>Medical Office</h1>
+    <nav>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Welcome to our Medical Office</h2>
+      <p>We provide quality healthcare services to our patients.</p>
+    </section>
+    <section>
+      <h2>Our Services</h2>
+      <ul>
+        <li>General Medicine</li>
+      </ul>
+    </section>
+    <section>
+      <h2>About Us</h2>
+      <p>We are a team of experienced healthcare professionals dedicated to providing the best medical care to our
+        patients.</p>
+    </section>
+    <section>
+      <h2>Contact Us</h2>
+      <p>Base Camp Coding Acadmy<br>
+        Water Valley, MS<br>
+        Phone: 662:nun:ya:buisness<br>
+        Email: info@BCCA.org</p>
+    </section>
   </main>
   <footer>
     <p>&copy; Unit 5 Project feturing Bryan, Joesph, Phillp, Drew. All rights reserved.</p>
   </footer>
-  {% endblock %}
 </body>
 
 </html>

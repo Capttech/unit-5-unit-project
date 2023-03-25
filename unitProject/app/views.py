@@ -120,6 +120,8 @@ def templatesView(request):
 def businessesView(request):
     businesses = Business.objects.all()
     return render(request, "businesses.html", {"businesses": businesses})
+    submissions = Submission.objects.filter(profile=request.user.profile)
+    return render(request, "submission_list.html", {"submissions": submissions})
 
 
 def profileView(request):
