@@ -42,21 +42,13 @@ class BusinessContactInfoForm(forms.ModelForm):
 class SubmissionForm(forms.ModelForm):
     class Meta:
         model = Submission
-        fields = ["template"]
+        fields = ["user", "template"]
 
+    #     business_contact_info = BusinessContactInfoForm()
 
-#     business_contact_info = BusinessContactInfoForm()
-
-# def __init__(self, *args, **kwargs):
-#     super(SubmissionForm, self).__init__(*args, **kwargs)
-#     self.fields["business"].queryset = Business.objects.filter(
-#         user=self.instance.user
-#     )
-# def __init__(self, *args, **kwargs):
-#     super(SubmissionForm, self).__init__(*args, **kwargs)
-#     self.fields["business"].queryset = Business.objects.filter(
-#         user=self.instance.user
-#     )
+    def __init__(self, *args, **kwargs):
+        super(SubmissionForm, self).__init__(*args, **kwargs)
+        self.fields["user"].queryset = Profile.objects.filter(user=self.instance.user)
 
 
 # =============| end of bryan's work |===============#
