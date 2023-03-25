@@ -84,3 +84,32 @@ def AccountSettings(request):
 
     context = {"form": form}
     return render(request, "profile.html", context)
+
+
+# the standard home view -Phillip
+def homeView(request):
+    return render(request, "home.html")
+
+
+def templatesView(request):
+    ...
+
+
+def businessesView(request):
+    ...
+
+
+def profileView(request):
+    ...
+
+
+def signupView(request):
+    ...
+
+
+def loginView(request):
+    ...
+
+
+def logoutView(request):
+    ...
