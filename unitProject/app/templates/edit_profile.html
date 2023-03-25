@@ -1,11 +1,7 @@
-{% extends 'index.html' %} {% block content %}
+{% extends 'home.html' %} {% block content %}
 <div class="container">
   <div class="card">
-    <img
-      src="{{ request.user.profile.profile_pic.url }}"
-      alt="Profile Picture"
-      class="profile_pic"
-    />
+    <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture" class="profile_pic" />
   </div>
   <div class="card">
     <form method="POST" enctype="multipart/form-data">
