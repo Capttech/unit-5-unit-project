@@ -12,6 +12,7 @@ urlpatterns = [
     path("logout/", LogoutUser, name="logout"),
     path("edit_profile/", AccountSettings, name="edit_profile"),
     path("", homeView, name="home"),
+<<<<<<< Updated upstream
     path("templates/", templatesView, name="templates"),
     path("businesses/", businessesView, name="businesses"),
     path("profile/", profileView, name="profile"),
@@ -37,6 +38,16 @@ urlpatterns = [
     path(
         "submissions/<int:submission_id>/", submission_detail, name="submission_detail"
     ),
+=======
+    # trying to see blog page template
+    path("Blog/", BlogPull, name="blog"),
+    # path("templates/", templatesView, name="templates"),
+    # path("businesses/", businessesView, name="businesses"),
+    # path("profile/", profileView, name="profile"),
+    # path("signup/", signupView, name="signup"),
+    # path("login/", loginView, name="login"),
+    # path("logout/", logoutView, name="logout"),
+>>>>>>> Stashed changes
 ]
 
 

@@ -1,5 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+<<<<<<< Updated upstream
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,3 +21,76 @@
     </div>
   </body>
 </html>
+=======
+	<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>
+			Test1
+		</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'jstyle.css' %}">
+	</head>
+	<body>
+		{% comment %} Nav bar check stylus {% endcomment %}
+		<div class = "nav_menu">
+			<ul>
+				<li><a href="link_to_first_page">Home</a></li>
+				<li><a href="link_to_2_page">My Blog</a></li>
+				<li><a href="link_to_third_page">About</a></li>
+				<li><a href="link_to_4_page">Contact Me</a></li>
+
+			</ul>
+			
+		</div>
+		{% comment %} beginning of columns {% endcomment %}
+		<div class = "row">
+			<div class = "column left">
+			
+			</div>
+
+
+
+			<div class = "column middle">
+				{% comment %} halfway next page {% endcomment %}
+				<div class = "halfway">
+					<h1>My Blog , My Story</h1>
+				</div>
+			</div>
+
+
+			<div class = "column right">
+				
+			</div>
+		</div>
+
+		{% comment %} next page {% endcomment %}
+		{% comment %} /\just used as a space {% endcomment %}
+		<div class = "ms_tornado">
+			<h1>Just used to create a border space for news 1</h1>
+			<div class = "news_picture">
+				<div class = "news_title">
+					<p class = "news_time">2days ago • 30 min</p>
+				<h2>At Least 23 Dead After Mississippi Tornadoes</h2>
+				<p>A powerful storm leveled a town in the central part of the state. Emergency officials said dozens of people were injured and being pulled from collapsed homes.</p>
+				</div>
+			</div>
+		</div>
+
+		{% comment %} second news article {% endcomment %}
+		<div class = "Ukraine_war">
+			<div class = "ukraine_title">
+				<p class = "ukraine_time">14days ago • 14 min</p>
+				<h2>Russian Invasion of Ukraine</h2>
+				<p>Ukraine Rushes Reinforcements to Sievierodonetsk</p>
+			</div>
+		</div>
+
+
+
+
+
+		
+
+    </body>
+</html>
+>>>>>>> Stashed changes
