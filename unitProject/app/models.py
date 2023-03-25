@@ -17,9 +17,6 @@ class Profile(models.Model):
         default="/profiles/profile_pic_green.png",
     )
     date_created = models.DateTimeField(auto_now_add=True)
-    business = models.ForeignKey(
-        "businessTemplateDatabase", on_delete=models.CASCADE, null=True, blank=True
-    )
 
     def __str__(self):
         return self.name
