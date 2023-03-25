@@ -118,7 +118,7 @@ def templatesView(request):
 
 @login_required
 def businessesView(request):
-    businesses = Business.objects.all()
+    businesses = businessTemplateDatabase.objects.all()
     return render(request, "businesses.html", {"businesses": businesses})
     submissions = Submission.objects.filter(profile=request.user.profile)
     return render(request, "submission_list.html", {"submissions": submissions})
