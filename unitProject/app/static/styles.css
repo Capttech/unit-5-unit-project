@@ -15,7 +15,7 @@ body {
     
     border-radius: 5px;
     box-shadow: 10px 10px 5px #333;
-    background-color: rgb(151, 64, 239);
+    background-color: rgb(103, 54, 124);
     text-align: center;
     padding: 4em;
     margin: 2em;
@@ -34,7 +34,9 @@ body {
     border-width: 1px;
     border-color: white;
 }
-
+.form_input {
+    color: black;
+}
 
 .get_started_card {
     width: 100%;
@@ -48,7 +50,7 @@ body {
     right: 35%;
     height: 100px;
     width: 200px;
-    background-color: rgb(112, 64, 132);
+    background-color: rgb(103, 54, 124);
     font-size: 2em;
     border-radius: 10px;
     
