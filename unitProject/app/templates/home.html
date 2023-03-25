@@ -38,7 +38,9 @@
    {% block content %}
 
    {% if not user.is_authenticated %}
+   <div class="get_started_card">
    <button class="get_started"><a href="{% url "register" %}">Get Started</a></button>
+   </div>
    {% endif %}
     
     {% endblock content %}
