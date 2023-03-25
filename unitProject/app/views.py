@@ -10,6 +10,10 @@ from django.contrib.auth.decorators import login_required
 from .decorators import *
 from django.contrib.auth.forms import AuthenticationForm
 from .manager import *
+import os
+from django.conf import settings
+from django.contrib import messages
+from django.views.generic import DetailView
 
 
 @login_required(login_url="login")
@@ -32,13 +36,18 @@ def RegisterPage(request):
             user.groups.add(group)
             Profile.objects.create(
                 user=user,
-                # uid=generateUserId(),
                 name=user.username,
                 email=user.email,
             )
             login(request, user)
             messages.success(request, "Account was created for " + username)
             return redirect("home")
+        else:
+            # Add error messages to the form fields with errors
+            for field, errors in form.errors.items():
+                messages.error(
+                    request, f"{field}: {', '.join(errors)}", extra_tags="danger"
+                )
 
     context = {"form": form}
     return render(request, "register.html", context)
@@ -72,6 +81,10 @@ def LogoutUser(request):
     return redirect("login")
 
 
+from django.conf import settings
+import os
+
+
 @login_required(login_url="login")
 def AccountSettings(request):
     profile = request.user.profile
@@ -80,10 +93,14 @@ def AccountSettings(request):
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
+            profile = form.save(commit=False)
+            if "profile_pic" in request.FILES:
+                profile.profile_pic = request.FILES["profile_pic"]
+            profile.save()
             form.save()
 
     context = {"form": form}
-    return render(request, "profile.html", context)
+    return render(request, "edit_profile.html", context)
 
 
 # the standard home view -Phillip
@@ -103,13 +120,6 @@ def profileView(request):
     ...
 
 
-def signupView(request):
-    ...
-
-
-def loginView(request):
-    ...
-
-
-def logoutView(request):
-    ...
+class WebsiteDetailView(DetailView):
+    model = generatedWebsites
+    template_name = "website_detail.html"

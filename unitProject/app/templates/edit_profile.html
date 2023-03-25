@@ -1,0 +1,23 @@
+{% extends 'index.html' %} {% block content %}
+<div class="container">
+  <div class="card">
+    <img
+      src="{{ request.user.profile.profile_pic.url }}"
+      alt="Profile Picture"
+      class="profile_pic"
+    />
+  </div>
+  <div class="card">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %} {% for field in form %}
+      <div class="form_field">{{field.label}} {{field}}</div>
+      {% endfor %}
+      <div class="form_field">
+        <label for="id_profile_pic">Profile Picture</label>
+        <input type="file" name="profile_pic" id="id_profile_pic" />
+      </div>
+      <button class="submit" type="submit">Submit Changes</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}

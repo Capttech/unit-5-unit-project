@@ -1,6 +1,8 @@
 .container{
     background-color: bisque;
     padding:  2em 0 2em 0;
+    align-items: center;
+    justify-content: center;
    
 }
 .card{
@@ -15,7 +17,7 @@
     max-width: fit-content;
 
 }
-.card .login{
+.card .form_field{
     padding: .5em;
     margin: .5em;
     color: yellow;
