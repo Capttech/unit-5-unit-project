@@ -46,12 +46,14 @@
         <button class="submit" type="submit">Register</button>
       </form>
       <br />
+
       {% if error_messages %}
       <ul>
-        {% for field, messages in error_messages.items %} {% for message in
-        messages %}
-        <li>{{ field }}: {{ message }}</li>
-        {% endfor %}
+        {% for field, messages in error_messages.items %}
+        <! ignore prettier ->
+        {% for message in messages %}
+        <li>{{ field.label }}: {{ message }}</li>
+        {% endfor %}{% endfor %}
       </ul>
       {% endif %}
       <div class="card_text">
