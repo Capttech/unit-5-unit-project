@@ -115,79 +115,6 @@ def templatesView(request):
     return render(request, "templates.html")
 
 
-# ====| what bryan is working on below |=========
-class WebsiteDetailView(DetailView):
-    model = generatedWebsites
-    template_name = "website_detail.html"
-
-
-from django.shortcuts import render, redirect
-from .models import Template, Submission
-
-
-# @login_required
-def form_submission(request):
-    if request.method == "POST":
-        # Get data from the form
-        template_id = request.POST.get("template_id")
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
-        # Create a new submission instance with the data
-        submission = Submission.objects.create(
-            template_id=template_id, name=name, email=email, message=message
-        )
-        # Generate the HTML page using the selected template and the submission data
-        template = Template.objects.get(id=template_id)
-        context = {"submission": submission}
-        html = template.render(context)
-        # Save the HTML page to the database
-        submission.html = html
-        submission.save()
-        # Redirect the user to the new HTML page
-        return redirect("submission_detail.html", pk=submission.pk)
-    else:
-        # If the request method is not POST, render the form template
-        templates = Template.objects.all()
-        context = {"templates": templates}
-        return render(request, "form.html", context)
-
-
-@login_required
-def create_template(request):
-    if request.method == "POST":
-        # Create a new Template object with the submitted data
-        template = Template(
-            name=request.POST["name"],
-            description=request.POST["description"],
-            content=request.POST["content"],
-            owner=request.user.profile,
-        )
-        template.save()
-        return redirect("template_detail.html", pk=template.pk)
-    else:
-        # Render a form for the user to create a new template
-        return render(request, "create_template.html")
-
-
-@login_required
-def generate_html(request, submission_id):
-    # Retrieve the submission object
-    submission = get_object_or_404(Submission, pk=submission_id)
-
-    # Retrieve the template object
-    template = submission.template
-
-    # Define the context to render the template with
-    context = {
-        "submission": submission,
-        "template": template,
-    }
-
-    # Render the HTML template with the context
-    return render(request, template.html_file.name, context)
-
-
 # -----Drew's work-----#
 @login_required
 def medical_office_html(request):
@@ -235,54 +162,6 @@ def view_user_business(request, tempName, webId):
     else:
         return render(f"{allTemplates[tempName]}.html", foundTemplateData)
 
-
-# views.py
-
-
-@login_required
-def edit_submission(request, submission_id):
-    submission = get_object_or_404(Submission, pk=submission_id)
-    if request.method == "POST":
-        form = SubmissionForm(request.POST, instance=submission)
-        if form.is_valid():
-            form.save()
-            return redirect("submission_detail.html", submission_id=submission_id)
-    else:
-        form = SubmissionForm(instance=submission)
-    return render(request, "edit_submission.html", {"form": form})
-
-
-@login_required
-def delete_submission(request, submission_id):
-    submission = get_object_or_404(Submission, pk=submission_id)
-    submission.delete()
-    return redirect("submission_list.html")
-
-
-@login_required
-def upload_image(request, submission_id):
-    submission = get_object_or_404(Submission, pk=submission_id)
-    if request.method == "POST":
-        image = request.FILES["image"]
-        submission.image.save(image.name, image)
-        submission.save()
-        return redirect("submission_detail.html", submission_id=submission_id)
-    return render(request, "upload_image.html", {"submission": submission})
-
-
-@login_required
-def submission_detail(request, submission_id):
-    submission = get_object_or_404(Submission, pk=submission_id)
-    return render(request, "submission_detail.html", {"submission": submission})
-
-
-@login_required
-def submission_list(request):
-    submissions = Submission.objects.filter(profile=request.user.profile)
-    return render(request, "submission_list.html", {"submissions": submissions})
-
-
-# =====| end of bryan work===================#
 
 # test to see blog
 def BlogPull(request):
