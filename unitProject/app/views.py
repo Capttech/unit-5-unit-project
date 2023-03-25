@@ -200,6 +200,25 @@ def generate_html(request, submission_id):
     return render(request, template.html_file.name, context)
 
 
+# -----Drew's work-----#
+@login_required
+def medical_office_html(request):
+    if request.method == "POST":
+        template = Template(
+            name=request.POST["name"],
+            description=request.POST["description"],
+            content=request.POST["content"],
+            owner=request.user.profile,
+        )
+        template.save()
+        return redirect("medical_office.html", pk=template.pk)
+    else:
+        return render(request, "home.html")
+
+
+# ------End of Drew's work-------#
+
+
 @login_required
 def create_business(request):
     if request.method == "POST":
