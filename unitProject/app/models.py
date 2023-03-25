@@ -6,9 +6,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     uid = models.CharField(max_length=50)
-    name = models.CharField(max_length=50)
+    user_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
-    email = models.EmailField(max_length=254)
+    user_email = models.EmailField(max_length=254)
     profile_pic = models.ImageField(
         upload_to="profiles/",
         verbose_name="Profile Picture",
@@ -27,51 +27,54 @@ class Profile(models.Model):
 
 # ==========| BUSINESS INFORMATION |==========#
 class businessTemplateDatabase(models.Model):
-    name = models.TextField(max_length=255)
+    templateId = models.TextField()
+    business_name = models.TextField(max_length=255)
     description = models.TextField(max_length=255)
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
-    creationDate = models.DateField()
-    profile = models.ManyToManyField(Profile, related_name="business")
+    business_name = models.ForeignKey(
+        Profile, related_name="business", on_delete=models.CASCADE
+    )
 
 
 class businessContactInfoDatabase(models.Model):
-    email = models.TextField(max_length=255)
+    business_email = models.TextField(max_length=255)
     phone_number = models.IntegerField(verbose_name="phone number")
     address = models.TextField()
-    manager = models.ForeignKey(
+    owner_contact_info = models.ForeignKey(
         businessTemplateDatabase, related_name="contact", on_delete=models.CASCADE
     )
 
 
 # ==========| GENERATED WEBSITES |==========#
-class generatedWebsites(models.Model):
-    id = models.TextField(primary_key=True)
-    profile = models.ForeignKey(
-        Profile, related_name="websites", on_delete=models.CASCADE
-    )
+# class generatedWebsites(models.Model):
+#     webId = models.TextField()
+#     templateId = models.TextField()
+#     profile = models.ForeignKey(
+#         Profile, related_name="websites", on_delete=models.CASCADE
+#     )
 
 
-# ====| what bryan is working on below |=========
+# # ====| what bryan is working on below |=========
 
-# ==========| TEMPLATE |==========#
-class Template(models.Model):
-    name = models.CharField(max_length=255)
-    html = models.TextField()
-    css = models.TextField()
+# # ==========| TEMPLATE |==========#
+# class Template(models.Model):
+#     name = models.CharField(max_length=255)
+#     html = models.TextField()
+#     css = models.TextField()
 
-    def __str__(self):
-        return self.name
-
-
-# ==========| SUBMISSION |==========#
-class Submission(models.Model):
-    user = models.ForeignKey("Profile", on_delete=models.CASCADE)
-    template = models.ForeignKey("Template", on_delete=models.CASCADE)
-    data = models.JSONField()
-
-    def __str__(self):
-        return f"{self.user.name}'s submission for {self.template.name}"
+#     def __str__(self):
+#         return self.name
 
 
-# ====| end of bryan's work |=========
+# # ==========| SUBMISSION |==========#
+# class Submission(models.Model):
+#     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+#     template = models.ForeignKey(Template, on_delete=models.CASCADE)
+#     data = models.JSONField()
+
+#     def __str__(self):
+#         return f"{self.user.name}'s submission for {self.template.name}"
+
+
+# # ====| end of bryan's work |=========
