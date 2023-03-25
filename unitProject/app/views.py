@@ -118,12 +118,8 @@ def templatesView(request):
 
 @login_required
 def businessesView(request):
-    if request.user.is_authenticated:
-        submissions = Submission.objects.filter(profile=request.user.profile)
-        # your code to render the page
-    else:
-        # handle the case where the user is not authenticated
-        pass
+    businesses = Business.objects.all()
+    return render(request, "businesses.html", {"businesses": businesses})
 
 
 def profileView(request):
