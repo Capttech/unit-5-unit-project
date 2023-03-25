@@ -1,14 +1,17 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
+{% load static %}<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit 5 Project</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
 </head>
 
@@ -17,26 +20,28 @@
     <div class="navdiv">
         <h1 class="header">Dreamwave Website Solutions</h1>
         <nav class="navbar">
+{% if user.is_authenticated %}
+            <p>Welcome, {{ user.profile.user_name }}</p>
             <button><a href="{% url "home" %}">Home</a></button>
             <button><a href="{% url "templates" %}">View templates</a></button>
-            <button><a href="{% url "businesses" %}">Your businesses</a></button>
+            <button><a href="{% url "businesses" %}">Your businesses</a></button> 
             <button><a href="{% url "edit_profile" %}">Edit Profile</a></button>
             <button><a href="{% url "logout" %}">Logout</a></button>
-            <button><a href="{% url "medical_office" %}"> Drew's Template</a><button>
 
+ {% endif %}
         </nav>
 
     </div>
 
     <div class="welcome">Let us help you build your dream site!</div>
 
-    <button class="get_started"><a href="{% url "register" %}">Get Started</a></button>
+   {% block content %}
 
-
-
-
-    {% block content %}{% endblock content %}
-
+   {% if not user.is_authenticated %}
+   <button class="get_started"><a href="{% url "register" %}">Get Started</a></button>
+   {% endif %}
+    
+    {% endblock content %}
+    
 </body>
-
 </html>
