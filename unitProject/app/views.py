@@ -72,6 +72,7 @@ def LoginPage(request):
             if user is not None:
                 login(request, user)
                 return redirect("home")
+
             else:
                 messages.info(request, "Username OR Password is Incorrect")
 
@@ -222,7 +223,7 @@ def create_business(request):
         if form.is_valid():
             business = form.save(commit=False)
             business.save()
-            return redirect("generate_template.html", pk=business.pk)
+            return redirect("template")
     else:
         form = BusinessForm()
 

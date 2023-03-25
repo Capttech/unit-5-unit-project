@@ -12,6 +12,7 @@ urlpatterns = [
     path("logout/", LogoutUser, name="logout"),
     path("edit_profile/", AccountSettings, name="edit_profile"),
     path("", homeView, name="home"),
+    path("add_business/", create_business, name="add_business"),
     path("businesses/", businessesView, name="businesses"),
     path("profile/", profileView, name="profile"),
     # ================|bryan's work|=======================#
