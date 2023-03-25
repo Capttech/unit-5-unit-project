@@ -109,12 +109,6 @@ def homeView(request):
 def businessesView(request):
     businesses = businessTemplateDatabase.objects.all()
     return render(request, "template.html", {"businesses": businesses})
-    submissions = Submission.objects.filter(profile=request.user.profile)
-    return render(request, "submission_list.html", {"submissions": submissions})
-
-
-def profileView(request):
-    ...
 
 
 def templatesView(request):
@@ -216,6 +210,11 @@ def create_business(request):
 
     context = {"form": form}
     return render(request, "create_business.html", context)
+
+
+def view_user_business(request, tempName, webId):
+    if request.method == "GET":
+        pass
 
 
 # views.py

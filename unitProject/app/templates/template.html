@@ -9,7 +9,7 @@
 <p>Email: {{ object.business.contact.email }}</p>
 <p>Phone Number: {{ object.business.contact.phoneNumber }}</p>
 <p>Address: {{ object.business.contact.address }}</p>
-<button class="link"><a href="{% url '' %}">view My Websites</a></button>
+<button class="link"><a href="{% url '/' %}">view My Websites</a></button>
 {% endif %}
 <button class="link">
   <a href="{% url 'add_business' %}">Create Business</a>

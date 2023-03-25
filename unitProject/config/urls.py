@@ -18,6 +18,11 @@ urlpatterns = [
     path("medical_office/", medical_office_html, name="medical_office"),
     path("medical_office/medical_office/home/", homeView, name="home"),
     path("blog/", BlogPull, name="blog"),
+    path(
+        "view_business/<str: tempName>/<str: webId>/",
+        view_user_business,
+        name="view_business",
+    ),
     # ================|bryan's work|=======================#
     # path("template/new/", create_template, name="template_create"),
     # path("template/<int:pk>/", create_template, name="template_detail"),
