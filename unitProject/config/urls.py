@@ -41,7 +41,7 @@ urlpatterns = [
     #     "submissions/<int:submission_id>/", submission_detail, name="submission_detail"
     # ),
     # trying to see blog page template
-    # path("templates/", templatesView, name="templates"),
+    path("templates/", templatesView, name="templates"),
     # path("businesses/", businessesView, name="businesses"),
     # path("profile/", profileView, name="profile"),
     # path("signup/", signupView, name="signup"),

@@ -16,13 +16,6 @@ from django.contrib import messages
 from django.views.generic import DetailView
 
 
-# @login_required(login_url="login")
-# def home(request):
-#     users = User.objects.all()
-#     context = {"users": users}
-#     return render(request, "index.html", context)
-
-
 from django.contrib import messages
 
 
@@ -122,6 +115,10 @@ def businessesView(request):
 
 def profileView(request):
     ...
+
+
+def templatesView(request):
+    return render(request, "templates.html")
 
 
 # ====| what bryan is working on below |=========
