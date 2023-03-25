@@ -80,8 +80,15 @@ body {
 .Welcome {
     font-size: large;
 }
+
+.navb {
+    background-color: rgb(103, 54, 124);
+    border-radius: 3px;
+}
+
 .navb a {
-    color: black;
+    color: whitesmoke;
+    text-decoration: none;
 }
 
 
