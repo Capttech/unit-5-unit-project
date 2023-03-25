@@ -6,7 +6,7 @@ Bryan and Joseph:
 back end / user interaction
 
 Phillip:
-1 html/css template / css for user interaction pages
+navbar for entire site / 1 html/css template / css for user interaction pages
 
 Drew:
 1 html/css template / presentation

@@ -9,6 +9,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from .decorators import *
 from django.contrib.auth.forms import AuthenticationForm
+from .manager import *
 
 
 @login_required(login_url="login")
@@ -31,12 +32,13 @@ def RegisterPage(request):
             user.groups.add(group)
             Profile.objects.create(
                 user=user,
+                # uid=generateUserId(),
                 name=user.username,
                 email=user.email,
             )
-
+            login(request, user)
             messages.success(request, "Account was created for " + username)
-            return redirect("login")
+            return redirect("home")
 
     context = {"form": form}
     return render(request, "register.html", context)
@@ -82,3 +84,32 @@ def AccountSettings(request):
 
     context = {"form": form}
     return render(request, "profile.html", context)
+
+
+# the standard home view -Phillip
+def homeView(request):
+    return render(request, "home.html")
+
+
+def templatesView(request):
+    ...
+
+
+def businessesView(request):
+    ...
+
+
+def profileView(request):
+    ...
+
+
+def signupView(request):
+    ...
+
+
+def loginView(request):
+    ...
+
+
+def logoutView(request):
+    ...
