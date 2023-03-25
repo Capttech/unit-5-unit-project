@@ -45,7 +45,7 @@ class businessTemplateDatabase(models.Model):
 
 class businessContactInfoDatabase(models.Model):
     email = models.TextField(max_length=255)
-    phoneNumber = models.IntegerField()
+    phone_number = models.IntegerField(verbose_name="phone number")
     address = models.TextField()
     business = models.ForeignKey(
         businessTemplateDatabase,
@@ -64,3 +64,28 @@ class generatedWebsites(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
+
+
+# ====| what bryan is working on below |=========
+
+# ==========| TEMPLATE |==========#
+class Template(models.Model):
+    name = models.CharField(max_length=255)
+    html = models.TextField()
+    css = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
+# ==========| SUBMISSION |==========#
+class Submission(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    template = models.ForeignKey(Template, on_delete=models.CASCADE)
+    data = models.JSONField()
+
+    def __str__(self):
+        return f"{self.user.name}'s submission for {self.template.name}"
+
+
+# ====| end of bryan's work |=========
