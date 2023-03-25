@@ -46,6 +46,16 @@
         <button class="submit" type="submit">Register</button>
       </form>
       <br />
+
+      {% if error_messages %}
+      <ul>
+        {% for field, messages in error_messages.items %}
+        <! ignore prettier ->
+        {% for message in messages %}
+        <li class="message">{{ field.label }}: {{ message }}</li>
+        {% endfor %}{% endfor %}
+      </ul>
+      {% endif %}
       <div class="card_text">
         <span>Have an Account?</span
         ><a class="link" href="{% url 'login' %}">Login</a>
