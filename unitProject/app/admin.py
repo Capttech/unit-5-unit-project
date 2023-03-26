@@ -3,4 +3,4 @@ from .models import *
 
 admin.site.register(Profile)
 admin.site.register(businessTemplateDatabase)
-# admin.site.register(businessContactInfoDatabase)
+admin.site.register(businessContactInfoDatabase)
