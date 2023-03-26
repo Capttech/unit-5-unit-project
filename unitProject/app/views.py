@@ -107,6 +107,7 @@ def homeView(request):
 
 @login_required
 def businessesView(request):
+    current_user = request.user.profile
     businesses = businessTemplateDatabase.objects.all()
     return render(request, "template.html", {"businesses": businesses})
 
@@ -126,13 +127,16 @@ def medical_office_html(request):
 
 @login_required
 def create_business(request):
+    profile = request.user.profile
+    templateId = generateUserId()
     if request.method == "POST":
         form = BusinessForm(request.POST)
         if form.is_valid():
             business = form.save(commit=False)
+            business.templateId = generateWebsite(templateId, profile)
             business.profile = request.user.profile
             business.save()
-            print(business)
+
             return redirect("businesses")
     else:
         form = BusinessForm()
