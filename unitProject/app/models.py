@@ -45,6 +45,9 @@ class businessContactInfoDatabase(models.Model):
         businessTemplateDatabase, related_name="contact", on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return self.business.name + "Contact Info"
+
 
 # ==========| GENERATED WEBSITES |==========#
 class generatedWebsites(models.Model):

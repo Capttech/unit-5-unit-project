@@ -105,11 +105,13 @@ def homeView(request):
     return render(request, "home.html")
 
 
-@login_required
 def businessesView(request):
-    current_user = request.user.profile
     businesses = businessTemplateDatabase.objects.all()
-    return render(request, "template.html", {"businesses": businesses})
+    business_contact = businessContactInfoDatabase.objects.filter(
+        business__in=businesses
+    )
+    context = {"businesses": businesses, "business_contact": business_contact}
+    return render(request, "template.html", context)
 
 
 def templatesView(request):
@@ -136,7 +138,6 @@ def create_business(request):
             business.templateId = generateWebsite(templateId, profile)
             business.profile = request.user.profile
             business.save()
-
             return redirect("businesses")
     else:
         form = BusinessForm()
@@ -168,6 +169,23 @@ def view_user_business(request, tempName, webId):
         return render(f"{allTemplates[tempName]}.html")
     else:
         return render(f"{allTemplates[tempName]}.html", foundTemplateData)
+
+
+def create_business_contact_info(request, business_id):
+    businesses = businessTemplateDatabase.objects.filter(name=request.user.profile.user)
+    business = businessTemplateDatabase.objects.get(id=business_id)
+    if request.method == "POST":
+        form = BusinessContactInfoForm(request.POST)
+        if form.is_valid():
+            contact_info = form.save(commit=False)
+            contact_info.business = business
+            contact_info.save()
+
+            return redirect("businesses")
+
+    else:
+        form = BusinessContactInfoForm()
+    return render(request, "contact_info.html", {"form": form, "business": business})
 
 
 # test to see blog

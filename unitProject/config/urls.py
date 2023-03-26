@@ -14,6 +14,11 @@ urlpatterns = [
     path("", homeView, name="home"),
     path("add_business/", create_business, name="add_business"),
     path("businesses/", businessesView, name="businesses"),
+    path(
+        "contact_info/<str:business_id>/",
+        create_business_contact_info,
+        name="contact_info",
+    ),
     path("medical_office/", medical_office_html, name="medical_office"),
     path("medical_office/medical_office/home/", homeView, name="home"),
     path("blog/", BlogPull, name="blog"),
