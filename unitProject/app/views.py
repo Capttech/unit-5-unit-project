@@ -105,7 +105,6 @@ def homeView(request):
     return render(request, "home.html")
 
 
-@login_required(login_url="login")
 def businessesView(request):
     businesses = businessTemplateDatabase.objects.all()
     business_contact = businessContactInfoDatabase.objects.filter(
@@ -120,13 +119,13 @@ def templatesView(request):
     return render(request, "templates.html", context)
 
 
-def show_user_business(request, tempName):
-    webId = request.GET.get("id")
-    if tempName in allTemplates:
-        return view_user_business(request, allTemplates[tempName, webId)
-    else:
-        # handle invalid template name error
-        pass
+# def show_user_business(request, tempName):
+#     webId = request.GET.get("id")
+#     if tempName in allTemplates:
+#         return view_user_business(request, allTemplates[tempName, webId])
+#     else:
+#         # handle invalid template name error
+#         pass
 
 
 # -----Drew's work-----#
