@@ -105,6 +105,7 @@ def homeView(request):
     return render(request, "home.html")
 
 
+@login_required(login_url="login")
 def businessesView(request):
     businesses = businessTemplateDatabase.objects.all()
     business_contact = businessContactInfoDatabase.objects.filter(
@@ -115,11 +116,21 @@ def businessesView(request):
 
 
 def templatesView(request):
-    return render(request, "templates.html")
+    context = {"allTemplates": allTemplates}
+    return render(request, "templates.html", context)
+
+
+def show_user_business(request, tempName):
+    webId = request.GET.get("id")
+    if tempName in allTemplates:
+        return view_user_business(request, allTemplates[tempName, webId)
+    else:
+        # handle invalid template name error
+        pass
 
 
 # -----Drew's work-----#
-@login_required
+@login_required(login_url="login")
 def medical_office_html(request):
     return render(request, "medical_office.html")
 
@@ -127,7 +138,7 @@ def medical_office_html(request):
 # ------End of Drew's work-------#
 
 
-@login_required
+@login_required(login_url="login")
 def create_business(request):
     profile = request.user.profile
     templateId = generateUserId()
@@ -151,6 +162,7 @@ allTemplates["drew"] = "medical_office"
 allTemplates["jarvis"] = "blog"
 
 
+@login_required(login_url="login")
 def view_user_business(request, tempName, webId):
     allGeneratedSites = generatedWebsites.objects.all()
     allCreatedTemplates = businessTemplateDatabase.objects.all()
@@ -171,6 +183,7 @@ def view_user_business(request, tempName, webId):
         return render(f"{allTemplates[tempName]}.html", foundTemplateData)
 
 
+@login_required(login_url="login")
 def create_business_contact_info(request, business_id):
     businesses = businessTemplateDatabase.objects.filter(name=request.user.profile.user)
     business = businessTemplateDatabase.objects.get(id=business_id)
