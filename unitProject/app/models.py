@@ -33,6 +33,9 @@ class businessTemplateDatabase(models.Model):
         Profile, related_name="business", on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return self.name
+
 
 class businessContactInfoDatabase(models.Model):
     email = models.TextField(max_length=255)

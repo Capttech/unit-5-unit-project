@@ -130,8 +130,10 @@ def create_business(request):
         form = BusinessForm(request.POST)
         if form.is_valid():
             business = form.save(commit=False)
+            business.profile = request.user.profile
             business.save()
-            return redirect("template")
+            print(business)
+            return redirect("businesses")
     else:
         form = BusinessForm()
 
@@ -141,6 +143,7 @@ def create_business(request):
 
 allTemplates = {}
 allTemplates["drew"] = "medical_office"
+allTemplates["jarvis"] = "blog"
 
 
 def view_user_business(request, tempName, webId):
