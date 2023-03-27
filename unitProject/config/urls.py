@@ -28,7 +28,7 @@ urlpatterns = [
         name="view_business",
     ),
     # trying to see blog page template
-    path("templates/", templatesView, name="templates"),
+    path("business/<int:business_id>/templates/", templatesView, name="templates"),
 ]
 
 
