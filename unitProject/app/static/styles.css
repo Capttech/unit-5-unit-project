@@ -22,9 +22,17 @@ body {
     margin: 2em;
     max-width: fit-content;
     
-    
-
 }
+
+.profile_card {
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(211, 34, 102);
+    background-color: rgb(103, 54, 124);
+    text-align: center;
+    margin: 2em;
+    padding: 1em;
+}
+
 .card .form_field{
     padding: .5em;
     margin: .5em;
@@ -70,7 +78,7 @@ select option {
     right: 35%;
     height: 70px;
     width: 220px;
-    background-color: rgb(103, 54, 124);
+    background-color: rgb(211, 34, 102);
     font-size: 2em;
     border-radius: 35px;
     cursor: pointer;   
@@ -170,7 +178,8 @@ input {
 }
 
 .profile_pic {
-    height: 6em;
+    height: 10em;
+    border-radius: 5em;
 }
 
 
