@@ -147,9 +147,6 @@ def create_business_contact_info(request, business_id):
     return render(request, "contact_info.html", {"form": form, "business": business})
 
 
-# ====everything above this line works==========#
-
-
 def templatesView(request, business_id):
     try:
         business = businessTemplateDatabase.objects.get(id=business_id)
@@ -167,6 +164,9 @@ def templatesView(request, business_id):
     else:
         context = {"Phillip": "This is data for Template 3"}
         return render(request, "template_3.html", context)
+
+
+# ====everything above this line works==========#
 
 
 #
