@@ -3,10 +3,7 @@
   <div class="card">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %} {% for field in form %}
-      <div class="form_field">
-        {{field.label}}
-        <div class="form_input">{{field}}</div>
-      </div>
+      <div class="form_field">{{field.label}} {{field}}</div>
       {% endfor %}
       <button class="submit" type="submit">Submit</button>
     </form>
