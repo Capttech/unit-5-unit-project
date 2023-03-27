@@ -14,7 +14,7 @@
 
   <body>
     <header>
-      <h1 class="medical">Medical Office</h1>
+      <h1 class="medical">{{ medical_office }}</h1>
       <nav>
         <ul>
           <li><a href="medical_office/home/">Home</a></li>
@@ -23,34 +23,36 @@
     </header>
     <main>
       <section>
-        <h2>Welcome to our {{business.type}}</h2>
-        <p>{{business.missionStatement}}</p>
+        <h2>Welcome to our {{ business.type }}</h2>
+        <p>{{ business.missionStatement }}</p>
       </section>
       <section>
         <h2>Our Services</h2>
         <ul>
-          <li>{{business.name}} General Medicine</li>
+          <li>{{ business.name }} General Medicine</li>
         </ul>
       </section>
       <section>
         <h2>About Us</h2>
-        <p>{{business.description}}</p>
+        <p>{{ business.description }}</p>
       </section>
       <section>
         <h2>Contact Us</h2>
         {% for contact in business_contact %}
         <p>
-          Address: {{business.contact.address}}<br />
-          Phone: {{business.contact.phoneNumber}}<br />
-          Email: {{business.contact.email}}
+          Address: {{contact.address}}<br />
+          Phone: {{contact.phoneNumber}}<br />
+          Email: {{contact.email}}
         </p>
         {% endfor %}
       </section>
     </main>
     <footer>
       <p>
-        &copy; Unit 5 Project feturing Bryan, Joesph, Phillp, Drew. All rights
-        reserved.
+        <span>
+          &copy; Unit 5 Project featuring Bryan, Joseph, Phillip, Drew, Jarvis.
+          All rights reserved.
+        </span>
       </p>
     </footer>
   </body>

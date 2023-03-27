@@ -67,7 +67,7 @@ def LoginPage(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                messages.success(request, "{{username}} has been created")
+                messages.success(request, username + "has been created")
                 login(request, user)
                 return redirect("home")
 
@@ -150,19 +150,34 @@ def create_business_contact_info(request, business_id):
 def templatesView(request, business_id):
     try:
         business = businessTemplateDatabase.objects.get(id=business_id)
+        business_contact = businessContactInfoDatabase.objects.filter(
+            business=business_id
+        )
     except businessTemplateDatabase.DoesNotExist:
         return HttpResponseNotFound("Business does not exist")
 
     template_choice = business.template_choice
 
     if template_choice == "medical_office":
-        context = {"medical_office": "Medical Office" "business": business}
+        context = {
+            "medical_office": "Medical Office",
+            "business": business,
+            "business_contact": business_contact,
+        }
         return render(request, "medical_office.html", context)
     elif template_choice == "Blog":
-        context = {"Blog": "This is data for Template 2"}
+        context = {
+            "Blog": "This is data for Template 2",
+            "business": business,
+            "business_contact": business_contact,
+        }
         return render(request, "Nav_bar.html", context)
     else:
-        context = {"Phillip": "This is data for Template 3"}
+        context = {
+            "Phillip": "This is data for Template 3",
+            "business": business,
+            "business_contact": business_contact,
+        }
         return render(request, "template_3.html", context)
 
 
