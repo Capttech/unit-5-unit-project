@@ -1,20 +1,39 @@
 {% extends 'home.html' %} {% block content %}
 <div class="container">
-  {% if businesses|length == 0 %}
-  <p class="no_items">You haven't created any businesses yet?</p>
-  {% else %} {% for business in businesses %}
-  <div class="card">
+  <div class="row">
+    <button class="link">
+      <a href="{% url 'add_business' %}">Create Business</a>
+    </button>
+    {% if businesses|length == 0 %}
+    <p class="no_items">You haven't created any businesses yet?</p>
+    {% else %} {% for business in businesses %}
+
     <h2>{{ business.name }} Website</h2>
     <p>{{ business.description }}</p>
-    <h3>Contact Information</h3>
-    {% for contact in business_contact %}
-    <! ignore prettier ->
-    {% if contact.business.id == business.id %}
-    <p>Email: {{ contact.email }}</p>
-    <p>Phone Number: {{ contact.phoneNumber }}</p>
-    <p>Address: {{ contact.address }}</p>
-    {% endif %} {% endfor %}
+    <div class="column">
+      <div class="card">
+        <h3>Contact Information</h3>
+        {% for contact in business_contact %}
+
+        <! ignore prettier ->
+        {% if contact.business.id == business.id %}
+        <br />
+        <p>Email: {{ contact.email }}</p>
+        <p>Phone Number: {{ contact.phoneNumber }}</p>
+        <p>Address: {{ contact.address }}</p>
+        {% endif %} {% endfor %}
+
+        <button class="link">
+          <a href="{% url 'contact_info' business.id %}">Add Contact Info</a>
+        </button>
+        <button class="link">
+          <a href="{% url 'home' %}">View My Website</a>
+        </button>
+      </div>
+    </div>
+    {% endfor %} {% endif %} {% if businesses|length == 0 %}
+    <p class="no_items">You haven't created a website for this business yet.</p>
+    {% endif %}
   </div>
-  {% endfor %} {% endif %}
+  {% endblock %}
 </div>
-{% endblock %}
