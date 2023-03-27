@@ -24,11 +24,17 @@ class Profile(models.Model):
 
 # ==========| BUSINESS INFORMATION |==========#
 class businessTemplateDatabase(models.Model):
+    CHOICES = (
+        ("Medical Office", "Medical Office"),
+        ("Blog", "Blog"),
+        ("Phillip", "Phillip"),
+    )
     templateId = models.TextField()
     name = models.TextField(max_length=255)
     description = models.TextField(max_length=255)
     type = models.TextField(max_length=255)
     missionStatement = models.TextField(max_length=1500)
+    template_choice = models.CharField(max_length=50, choices=CHOICES, null=True)
     profile = models.ForeignKey(
         Profile, related_name="business", on_delete=models.CASCADE
     )

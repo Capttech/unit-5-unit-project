@@ -26,7 +26,7 @@ class BusinessForm(forms.ModelForm):
 
     class Meta:
         model = businessTemplateDatabase
-        fields = ["name", "description", "type", "missionStatement"]
+        fields = ["name", "description", "type", "missionStatement", "template_choice"]
         widgets = {
             "description": forms.Textarea(attrs={"rows": 4}),
             "missionStatement": forms.Textarea(attrs={"rows": 8}),

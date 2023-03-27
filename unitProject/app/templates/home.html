@@ -25,7 +25,7 @@
 {% if user.is_authenticated %}
             <p>Welcome, {{ user.profile.user_name }}!</p>
             <button class="navb"><a href="{% url "home" %}">Home</a></button>
-            <button class="navb"><a href="{% url "templates" %}">View templates</a></button>
+            {% comment %} <button class="navb"><a href="{% url "templates" %}">View templates</a></button> {% endcomment %}
             <button class="navb"><a href="{% url "businesses" %}">Your businesses</a></button> 
             <button class="navb"><a href="{% url "edit_profile" %}">Edit Profile</a></button>
             <button class="navb"><a href="{% url "logout" %}">Logout</a></button>

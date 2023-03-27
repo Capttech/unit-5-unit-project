@@ -10,13 +10,17 @@ from django.contrib.auth.decorators import login_required
 from .decorators import *
 from django.contrib.auth.forms import AuthenticationForm
 from .manager import *
-import os
 from django.conf import settings
+import os
 from django.contrib import messages
 from django.views.generic import DetailView
-
-
+from django.http import HttpResponseNotFound
 from django.contrib import messages
+from django.template.loader import get_template, render_to_string
+
+# the standard home view -Phillip
+def homeView(request):
+    return render(request, "home.html")
 
 
 @unauthenticated_user
@@ -78,10 +82,6 @@ def LogoutUser(request):
     return redirect("login")
 
 
-from django.conf import settings
-import os
-
-
 @login_required(login_url="login")
 def AccountSettings(request):
     profile = request.user.profile
@@ -100,11 +100,6 @@ def AccountSettings(request):
     return render(request, "edit_profile.html", context)
 
 
-# the standard home view -Phillip
-def homeView(request):
-    return render(request, "home.html")
-
-
 def businessesView(request):
     businesses = businessTemplateDatabase.objects.all()
     business_contact = businessContactInfoDatabase.objects.filter(
@@ -112,29 +107,6 @@ def businessesView(request):
     )
     context = {"businesses": businesses, "business_contact": business_contact}
     return render(request, "template.html", context)
-
-
-def templatesView(request):
-    context = {"allTemplates": allTemplates}
-    return render(request, "templates.html", context)
-
-
-# def show_user_business(request, tempName):
-#     webId = request.GET.get("id")
-#     if tempName in allTemplates:
-#         return view_user_business(request, allTemplates[tempName, webId])
-#     else:
-#         # handle invalid template name error
-#         pass
-
-
-# -----Drew's work-----#
-@login_required(login_url="login")
-def medical_office_html(request):
-    return render(request, "medical_office.html")
-
-
-# ------End of Drew's work-------#
 
 
 @login_required(login_url="login")
@@ -156,32 +128,6 @@ def create_business(request):
     return render(request, "create_business.html", context)
 
 
-allTemplates = {}
-allTemplates["drew"] = "medical_office"
-allTemplates["jarvis"] = "blog"
-
-
-@login_required(login_url="login")
-def view_user_business(request, tempName, webId):
-    allGeneratedSites = generatedWebsites.objects.all()
-    allCreatedTemplates = businessTemplateDatabase.objects.all()
-    foundTemplateId = ""
-    foundTemplateData = []
-
-    for site in allGeneratedSites:
-        if site.webId == webId:
-            foundTemplateId = site.templateId
-
-    for template in allCreatedTemplates:
-        if template.id == foundTemplateId:
-            foundTemplateData = template
-
-    if foundTemplateId == "":
-        return render(f"{allTemplates[tempName]}.html")
-    else:
-        return render(f"{allTemplates[tempName]}.html", foundTemplateData)
-
-
 @login_required(login_url="login")
 def create_business_contact_info(request, business_id):
     businesses = businessTemplateDatabase.objects.filter(name=request.user.profile.user)
@@ -200,6 +146,68 @@ def create_business_contact_info(request, business_id):
     return render(request, "contact_info.html", {"form": form, "business": business})
 
 
+# ====everything above this line works==========#
+
+
+def templatesView(request, business_id):
+    try:
+        business = businessTemplateDatabase.objects.get(id=business_id)
+    except businessTemplateDatabase.DoesNotExist:
+        return HttpResponseNotFound("Business does not exist")
+
+    template_choice = business.template_choice
+
+    if template_choice == "medical_office":
+        context = {"Medical Office": "This is data for Template 1"}
+        return render(request, "medical_office.html", context)
+    elif template_choice == "Blog":
+        context = {"Blog": "This is data for Template 2"}
+        return render(request, "Nav_bar.html", context)
+    else:
+        context = {"Phillip": "This is data for Template 3"}
+        return render(request, "template_3.html", context)
+
+
+#
+allTemplates = {}
+allTemplates["drew"] = "medical_office"
+allTemplates["jarvis"] = "blog"
+
+
+@login_required(login_url="login")
+def view_user_business(request, tempName, webId):
+    if not tempName:
+        # if tempName is empty, return a 404 error response
+        return HttpResponseNotFound()
+    else:
+        allGeneratedSites = generatedWebsites.objects.all()
+        allCreatedTemplates = businessTemplateDatabase.objects.all()
+        foundTemplateId = ""
+        foundTemplateData = []
+
+        for site in allGeneratedSites:
+            if site.webId == webId:
+                foundTemplateId = site.templateId
+
+        for template in allCreatedTemplates:
+            if template.id == foundTemplateId:
+                foundTemplateData = template
+
+        if foundTemplateId == "":
+            return render(f"{allTemplates[tempName]}.html")
+        else:
+            return render(f"{allTemplates[tempName]}.html", foundTemplateData)
+
+
 # test to see blog
 def BlogPull(request):
     return render(request, "Nav_bar.html")
+
+
+# -----Drew's work-----#
+@login_required(login_url="login")
+def medical_office_html(request):
+    return render(request, "medical_office.html")
+
+
+# ------End of Drew's work-------#
