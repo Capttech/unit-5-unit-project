@@ -12,6 +12,7 @@
     <p>{{ business.description }}</p>
     <div class="column">
       <div class="card">
+        {% if business_contact|length >= 0 %}
         <h3>Contact Information</h3>
         {% for contact in business_contact %}
 
@@ -26,14 +27,21 @@
         <button class="link">
           <a href="{% url 'contact_info' business.id %}">Add Contact Info</a>
         </button>
+        {% else %}
         <button class="link">
-          <a href="{% url 'templates' business.id%}">View My Website</a>
+          <a href="{% url 'contact_info' business.id %}">Add Contact Info</a>
         </button>
+        {% endif %} {% if businesses|length == 0 %}
+        <p class="no_items">
+          You haven't created a website for this business yet.
+        </p>
+        {% else %}
+        <button class="link">
+          <a href="{% url 'templates' business.id%}">View My Website</a></button
+        >{% endif %}
       </div>
     </div>
-    {% endfor %} {% endif %} {% if businesses|length == 0 %}
-    <p class="no_items">You haven't created a website for this business yet.</p>
-    {% endif %}
+    {% endfor %} {% endif %}
   </div>
   {% endblock %}
 </div>

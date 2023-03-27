@@ -25,7 +25,7 @@ class Profile(models.Model):
 # ==========| BUSINESS INFORMATION |==========#
 class businessTemplateDatabase(models.Model):
     CHOICES = (
-        ("Medical Office", "Medical Office"),
+        ("medical_office", "Medical Office"),
         ("Blog", "Blog"),
         ("Phillip", "Phillip"),
     )
