@@ -105,18 +105,31 @@ def homeView(request):
     return render(request, "home.html")
 
 
-@login_required
 def businessesView(request):
     businesses = businessTemplateDatabase.objects.all()
-    return render(request, "template.html", {"businesses": businesses})
+    business_contact = businessContactInfoDatabase.objects.filter(
+        business__in=businesses
+    )
+    context = {"businesses": businesses, "business_contact": business_contact}
+    return render(request, "template.html", context)
 
 
 def templatesView(request):
-    return render(request, "templates.html")
+    context = {"allTemplates": allTemplates}
+    return render(request, "templates.html", context)
+
+
+# def show_user_business(request, tempName):
+#     webId = request.GET.get("id")
+#     if tempName in allTemplates:
+#         return view_user_business(request, allTemplates[tempName, webId])
+#     else:
+#         # handle invalid template name error
+#         pass
 
 
 # -----Drew's work-----#
-@login_required
+@login_required(login_url="login")
 def medical_office_html(request):
     return render(request, "medical_office.html")
 
@@ -124,14 +137,18 @@ def medical_office_html(request):
 # ------End of Drew's work-------#
 
 
-@login_required
+@login_required(login_url="login")
 def create_business(request):
+    profile = request.user.profile
+    templateId = generateUserId()
     if request.method == "POST":
         form = BusinessForm(request.POST)
         if form.is_valid():
             business = form.save(commit=False)
+            business.templateId = generateWebsite(templateId, profile)
+            business.profile = request.user.profile
             business.save()
-            return redirect("template")
+            return redirect("businesses")
     else:
         form = BusinessForm()
 
@@ -141,8 +158,10 @@ def create_business(request):
 
 allTemplates = {}
 allTemplates["drew"] = "medical_office"
+allTemplates["jarvis"] = "blog"
 
 
+@login_required(login_url="login")
 def view_user_business(request, tempName, webId):
     allGeneratedSites = generatedWebsites.objects.all()
     allCreatedTemplates = businessTemplateDatabase.objects.all()
@@ -161,6 +180,24 @@ def view_user_business(request, tempName, webId):
         return render(f"{allTemplates[tempName]}.html")
     else:
         return render(f"{allTemplates[tempName]}.html", foundTemplateData)
+
+
+@login_required(login_url="login")
+def create_business_contact_info(request, business_id):
+    businesses = businessTemplateDatabase.objects.filter(name=request.user.profile.user)
+    business = businessTemplateDatabase.objects.get(id=business_id)
+    if request.method == "POST":
+        form = BusinessContactInfoForm(request.POST)
+        if form.is_valid():
+            contact_info = form.save(commit=False)
+            contact_info.business = business
+            contact_info.save()
+
+            return redirect("businesses")
+
+    else:
+        form = BusinessContactInfoForm()
+    return render(request, "contact_info.html", {"form": form, "business": business})
 
 
 # test to see blog

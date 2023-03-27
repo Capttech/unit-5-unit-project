@@ -1,0 +1,5 @@
+{% for template_name, template_id in allTemplates.items %}
+<a class="link" href="{% url 'view_business' tempName %}?id={{ template_id }}"
+  >View {{ template_name }}</a
+>
+{% endfor %}

@@ -33,6 +33,9 @@ class businessTemplateDatabase(models.Model):
         Profile, related_name="business", on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return self.name
+
 
 class businessContactInfoDatabase(models.Model):
     email = models.TextField(max_length=255)
@@ -41,6 +44,9 @@ class businessContactInfoDatabase(models.Model):
     business = models.ForeignKey(
         businessTemplateDatabase, related_name="contact", on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return self.business.name + "Contact Info"
 
 
 # ==========| GENERATED WEBSITES |==========#
@@ -52,35 +58,4 @@ class generatedWebsites(models.Model):
     )
 
 
-# ====| what bryan is working on below |=========
-
-# ==========| TEMPLATE |==========#
-class Template(models.Model):
-    name = models.CharField(max_length=255)
-    html = models.TextField()
-    css = models.TextField()
-
-    def __str__(self):
-        return self.name
-
-
-# ==========| SUBMISSION |==========#
-from django.db import models
-from django.contrib.auth.models import User
-
-
-class Submission(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    template = models.CharField(max_length=100)
-    data = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    # New field
-    profile = models.ForeignKey("app.Profile", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.template}"
-
-
-# # ====| end of bryan's work |=========
+# =============if you see something down here called submission delete it we dont need it=======
