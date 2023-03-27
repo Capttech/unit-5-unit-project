@@ -1,7 +1,13 @@
 {% extends 'home.html' %} {% block content %}
-<form action="" method="POST">
-  {% csrf_token %} {{form.as_p}}
-
-  <button type="submit">Submit</button>
-</form>
+<div class="container">
+  <div class="card"></div>
+  <div class="card">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %} {% for field in form %}
+      <div class="form_field">{{field.label}} {{field}}</div>
+      {% endfor %}
+      <button class="submit" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 {% endblock content %}
