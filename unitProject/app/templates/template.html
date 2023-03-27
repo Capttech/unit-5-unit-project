@@ -5,7 +5,7 @@
       <a href="{% url 'add_business' %}">Create Business</a>
     </button>
     {% if businesses|length == 0 %}
-    <p class="no_items">You haven't created any businesses yet?</p>
+    <p class="no_items">You haven't created any businesses yet.</p>
     {% else %} {% for business in businesses %}
 
     <h2>{{ business.name }} Website</h2>
