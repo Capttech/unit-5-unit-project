@@ -1,5 +1,6 @@
 body {
     background-image: url("images/purplewaves.jpg");
+    
 }
 
 
@@ -14,7 +15,7 @@ body {
 .card{
     
     border-radius: 5px;
-    box-shadow: 10px 10px 5px #333;
+    box-shadow: 5px 5px 5px rgb(211, 34, 102);
     background-color: rgb(103, 54, 124);
     text-align: center;
     padding: 4em;
@@ -40,6 +41,10 @@ body {
     color: black;
 }
 
+.form_title {
+    font-size: 1.5em;
+}
+
 .get_started_card {
     width: 100%;
     height: 20em;
@@ -51,36 +56,41 @@ body {
     position: absolute;
     top: 30%;
     right: 35%;
-    height: 100px;
-    width: 200px;
+    height: 70px;
+    width: 220px;
     background-color: rgb(103, 54, 124);
     font-size: 2em;
-    border-radius: 10px;
-    cursor: pointer;
+    border-radius: 35px;
+    cursor: pointer;   
+    transition: box-shadow .5s ease-in-out;
+}
 
-    
-    
-    
+.get_started:hover {
+    box-shadow: 0 0 20px #ff00de;
 }
 
 .get_started a {
     text-decoration: none;
-    height: 100px;
-    width: 200px;
+   
     text-align: center;
-    padding: 0;
+    
     pointer-events: auto;
     
 }
 
 .header {
     height: 1.2em;
-    width: 100%;
+    /* width: 100%; */
     font-size: 3em;
+    font-weight: 700;
+    padding-left: .3em;
+    text-shadow: 0 0 10px #fff, 0 0 5px #fff, 0 0 10px  #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de;
 }
 
 .Welcome {
-    font-size: large;
+    font-size: larger;
+    margin: 0, 40px;
+    padding-left: 2em;
 }
 .navb {
     background-color: rgb(103, 54, 124);
@@ -95,10 +105,15 @@ body {
 .link {
     width: 130px;
     height: 50px;
-    background-color: rgb(211, 34, 102);
+    background-color: #ff00de;
     color: black;
-    border-radius: 10px;
+    border-radius: 25px;
+    transition: box-shadow .5s ease-in-out;
     
+}
+
+.link:hover {
+    box-shadow: 0 0 20px #ff00de;
 }
 
 .link a {
@@ -106,23 +121,30 @@ body {
     font-size: 1.2em;
 }
 
-.splash_div {
-    width: 100%;
-    text-align: center;
 
+.splash_div {
+    
+    height: auto;
+    padding: 0 40px;
+
+    
 }
 
 .splash_statement {
-    width: 85%; 
-  display: inline-block;
+  
+ 
+    
+}
 
+.profile_pic {
+    height: 5em;
 }
 
 
 
 /* not sure if we need these */
 
-.nav_menu {
+/* .nav_menu {
     overflow: hidden;
     background-color: rgb(255, 0, 0);
     background-size: cover;
@@ -138,4 +160,4 @@ ul {
     padding: 0;
     overflow: hidden;
     text-align: center;
-  } 
+  }  */

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="card">
     <div class="card_body">
-      <h3 class="form_title">Register</h3>
+      <h3 class="form_title">REGISTER</h3>
       <br />
       <form method="POST">
         {% csrf_token %}
@@ -57,8 +57,10 @@
       </ul>
       {% endif %}
       <div class="card_text">
-        <span>Have an Account?</span
-        ><a class="link" href="{% url 'login' %}">Login</a>
+        <p>
+          Have an Account?
+          <a class="small_link" href="{% url 'login' %}">Login</a>
+        </p>
       </div>
     </div>
   </div>
