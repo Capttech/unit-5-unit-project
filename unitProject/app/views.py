@@ -67,6 +67,7 @@ def LoginPage(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
+                messages.success(request, "{{username}} has been created")
                 login(request, user)
                 return redirect("home")
 
