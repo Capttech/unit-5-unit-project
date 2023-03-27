@@ -38,12 +38,13 @@
       </section>
       <section>
         <h2>Contact Us</h2>
+        {% for contact in business_contact %}
         <p>
-          {{business.name}}<br />
           Address: {{business.contact.address}}<br />
           Phone: {{business.contact.phoneNumber}}<br />
           Email: {{business.contact.email}}
         </p>
+        {% endfor %}
       </section>
     </main>
     <footer>
