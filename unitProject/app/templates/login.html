@@ -27,8 +27,11 @@
       </div>
       <button class="submit" type="submit">Login</button>
     </form>
-    <p>Don't have an Account?</p>
-    <a class="link" href="{% url 'register' %}">Sign Up</a>
+    <p>
+      Don't have an Account?
+      <a class="small_link" href="{% url 'register' %}">Sign Up</a>
+    </p>
+
     {% for message in messages %} {{ message }} {% endfor %}
   </div>
 </div>
