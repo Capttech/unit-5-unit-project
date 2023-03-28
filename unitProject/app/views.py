@@ -17,6 +17,27 @@ from django.views.generic import DetailView
 from django.http import HttpResponseNotFound
 from django.contrib import messages
 from django.template.loader import get_template, render_to_string
+list1 = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+]
 
 # the standard home view -Phillip
 def homeView(request):
@@ -125,12 +146,40 @@ def create_business(request):
             business.templateId = generateWebsite(templateId, profile)
             business.profile = request.user.profile
             business.save()
-            return redirect("businesses")
+            return redirect("http://127.0.0.1:8000/businesses/?id=" + generateUserId())
     else:
         form = BusinessForm()
 
     context = {"form": form}
     return render(request, "create_business.html", context)
+
+
+# ==========| GENERATE USER ID |==========#
+def generateUserId():
+    list1 = [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+    ]
+    return f"{random.choice(list1)}{random.choice(list1)}{random.choice(list1)}{random.choice(list1)}{random.choice(list1)}"
+
 
 
 @login_required(login_url="login")
