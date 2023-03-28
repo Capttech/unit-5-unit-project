@@ -11,20 +11,23 @@
     </div>
     <div class="info">
       <img src="{% static 'images/restaurant.jpg' %}" alt="restaurant" />
-      <p>{{business.description}}</p>
+      <p class="data">{{business.description}}</p>
     </div>
     <div class="info2">
       <img src="{% static 'images/kitchen.jpg' %}" alt="kitchen" />
-      <p>{{business.type}}</p>
+      <p class="data">{{business.type}}</p>
     </div>
     <div class="info">
       <img src="{% static 'images/waitress.jpg' %}" alt="waitress" />
       {% for contact in business_contact %}
-      <p>
-        Address: {{contact.address}}<br />
-        Phone: {{contact.phoneNumber}}<br />
-        Email: {{contact.email}}
-      </p>
+      <div>
+        <p class="data">
+          Address: {{contact.address}} <br />
+          Phone: {{contact.phoneNumber}} <br />
+          Email: {{contact.email}}
+        </p>
+      </div>
+      <br />
       {% endfor %}
     </div>
     <div class="links">

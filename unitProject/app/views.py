@@ -17,6 +17,7 @@ from django.views.generic import DetailView
 from django.http import HttpResponseNotFound
 from django.contrib import messages
 from django.template.loader import get_template, render_to_string
+
 list1 = [
     0,
     1,
@@ -181,7 +182,6 @@ def generateUserId():
     return f"{random.choice(list1)}{random.choice(list1)}{random.choice(list1)}{random.choice(list1)}{random.choice(list1)}"
 
 
-
 @login_required(login_url="login")
 def create_business_contact_info(request, business_id):
     businesses = businessTemplateDatabase.objects.filter(name=request.user.profile.user)
@@ -286,22 +286,23 @@ def restaurantView(request):
 
 
 # @login_required(login_url="login")
-# def DeleteBusiness(request, business.id):
-#     business = get_object_or_404(businessTemplateDatabase, id=business.id)
-#     business.delete()
-#     messages.success(request, "Business deleted successfully.")
-#     return redirect("businesses")
+# def DeleteBusiness(request, business_id):
+#     business = businessTemplateDatabase.objects.get(id=business_id)
+#     if request.method == "POST":
+#         business.delete()
+#         messages.success(request, "Business deleted successfully.")
+#         return redirect("businesses")
 
+
+#     context = {"item": business}
+#     return render(request, "delete.html", context)
 
 # @login_required(login_url="login")
 # def DeleteBusinessContactInfo(request, contact.id):
-#     business_contact = businessTemplateDatabase.objects.get(id=contact.id)
+#     business_contact = businessContactInfoDatabase.objects.get(id=contact.id)
 #     if request.method == "POST":
 #         business_contact.delete()
 #         return redirect("home")
 
 #     context = {"item": business_contact}
 #     return render(request, "delete_business_contact_info.html", context)
-
-
-# phillip
