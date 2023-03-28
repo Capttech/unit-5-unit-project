@@ -7,19 +7,25 @@
   </head>
   <body>
     <div class="header">
-      <span class="head">-- RESTAURANT NAME --</span>
+      <span class="head">{{business.name}}</span>
     </div>
     <div class="info">
       <img src="{% static 'images/restaurant.jpg' %}" alt="restaurant" />
-      <p>This is the first sample block of text for -- YOUR RESTAURANT --</p>
+      <p>{{business.description}}</p>
     </div>
     <div class="info2">
       <img src="{% static 'images/kitchen.jpg' %}" alt="kitchen" />
-      <p>This is the second sample block of text for -- YOUR RESTAURANT --</p>
+      <p>{{business.type}}</p>
     </div>
     <div class="info">
       <img src="{% static 'images/waitress.jpg' %}" alt="waitress" />
-      <p>This is the third sample block of text for -- YOUR RESTAURANT --</p>
+      {% for contact in business_contact %}
+      <p>
+        Address: {{contact.address}}<br />
+        Phone: {{contact.phoneNumber}}<br />
+        Email: {{contact.email}}
+      </p>
+      {% endfor %}
     </div>
     <div class="links">
       <a class="button" href="#" target="blank">Our Menu</a>
