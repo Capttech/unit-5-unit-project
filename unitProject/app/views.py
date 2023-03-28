@@ -41,7 +41,6 @@ def RegisterPage(request):
                 user_email=user.email,
             )
             login(request, user)
-            messages.success(request, "Account was created for " + username)
             return redirect("home")
         else:
             errors = form.errors.as_data()
