@@ -14,7 +14,11 @@
 
   <body>
     <header>
+<<<<<<< Updated upstream
       <h1 class="medical">{{ medical_office }}</h1>
+=======
+      <h1 class="medical">Medical Office</h1>
+>>>>>>> Stashed changes
       <nav>
         <ul>
           <li><a href="medical_office/home/">Home</a></li>
@@ -23,17 +27,27 @@
     </header>
     <main>
       <section>
+<<<<<<< Updated upstream
         <h2>Welcome to our {{ business.type }}</h2>
         <p>{{ business.missionStatement }}</p>
+=======
+        <h2>Welcome to our {{business.type}}</h2>
+        <p>{{business.missionStatement}}</p>
+>>>>>>> Stashed changes
       </section>
       <section>
         <h2>Our Services</h2>
         <ul>
+<<<<<<< Updated upstream
           <li>{{ business.name }} General Medicine</li>
+=======
+          <li>{{business.name}} General Medicine</li>
+>>>>>>> Stashed changes
         </ul>
       </section>
       <section>
         <h2>About Us</h2>
+<<<<<<< Updated upstream
         <p>{{ business.description }}</p>
       </section>
       <section>
@@ -45,14 +59,31 @@
           Email: {{contact.email}}
         </p>
         {% endfor %}
+=======
+        <p>{{business.description}}</p>
+      </section>
+      <section>
+        <h2>Contact Us</h2>
+        <p>
+          {{business.name}}<br />
+          Address: {{business.contact.address}}<br />
+          Phone: {{business.contact.phoneNumber}}<br />
+          Email: {{business.contact.email}}
+        </p>
+>>>>>>> Stashed changes
       </section>
     </main>
     <footer>
       <p>
+<<<<<<< Updated upstream
         <span>
           &copy; Unit 5 Project featuring Bryan, Joseph, Phillip, Drew, Jarvis.
           All rights reserved.
         </span>
+=======
+        &copy; Unit 5 Project feturing Bryan, Joesph, Phillp, Drew. All rights
+        reserved.
+>>>>>>> Stashed changes
       </p>
     </footer>
   </body>

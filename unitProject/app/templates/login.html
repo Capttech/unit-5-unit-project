@@ -27,11 +27,16 @@
       </div>
       <button class="med_link" type="submit">Login</button>
     </form>
+<<<<<<< Updated upstream
     <p>
       Don't have an Account?
       <a class="small_link" href="{% url 'register' %}">Sign Up</a>
     </p>
 
+=======
+    <p>Don't have an Account?</p>
+    <a class="link" href="{% url 'register' %}">Sign Up</a>
+>>>>>>> Stashed changes
     {% for message in messages %} {{ message }} {% endfor %}
   </div>
 </div>
