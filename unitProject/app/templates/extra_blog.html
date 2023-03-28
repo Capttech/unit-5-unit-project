@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>
+			Blog
+		</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'jstyle.css' %}">
+	</head>
+	<body>
+		{% comment %} Nav bar check stylus {% endcomment %}
+		<div class = "nav_menu">
+			<ul>
+				<li><a href="link_to_first_page">Home</a></li>
+				<li><a href="link_to_2_page">My Blog</a></li>
+				<li><a href="link_to_third_page">About</a></li>
+				<li><a href="link_to_4_page">Contact Me</a></li>
+
+			</ul>
+			
+		</div>
+		{% comment %} beginning of columns {% endcomment %}
+		<div class = "row">
+			<div class = "column left">
+			
+			</div>
+
+
+
+			<div class = "column middle">
+				{% comment %} halfway next page {% endcomment %}
+				<div class = "halfway">
+					<h1>My Blog , My Story</h1>
+				</div>
+			</div>
+
+
+			<div class = "column right">
+				
+			</div>
+		</div>
+
+		{% comment %} next page {% endcomment %}
+		{% comment %} /\just used as a space {% endcomment %}
+		<div class = "ms_tornado">
+			<h1>Just used to create a border space for news 1</h1>
+			<div class = "news_picture">
+				<div class = "news_title">
+					<p class = "news_time">2days ago • 30 min</p>
+				<h2>At Least 23 Dead After Mississippi Tornadoes</h2>
+				<p>A powerful storm leveled a town in the central part of the state. Emergency officials said dozens of people were injured and being pulled from collapsed homes.</p>
+				</div>
+			</div>
+		</div>
+
+		{% comment %} second news article {% endcomment %}
+		<div class = "Ukraine_war">
+			<div class = "ukraine_title">
+				<p class = "ukraine_time">14days ago • 14 min</p>
+				<h2>Russian Invasion of Ukraine</h2>
+				<p>Ukraine Rushes Reinforcements to Sievierodonetsk. As Russia pummeled eastern Ukraine with strikes, losses were climbing for both sides in a grinding war that Western leaders warned could last years.</p>
+
+				<li class = "second_link"><a href="https://www.nytimes.com/live/2022/06/19/world/ukraine-russia-news" target="blank">Click for full article</a></li>
+			</div>
+		</div>
+		
+		
+		{% comment %} THIRD NEWS ARTICLE {% endcomment %}
+		<div class ="Ghana">
+			<div class = "Ghana_title">
+				<p class = "ukraine_time">3months ago • 10 min</p>
+				<h2>The Ghanaian giant reported to be the world’s tallest man</h2>
+				<p>A local hospital in northern Ghana told 29-year-old Sulemana Abdul Samed during one of his recent check-ups that he had reached the height of 9 ft 6in</p>
+
+
+				<li class ="third_link"><a href="https://www.bbc.com/news/world-africa-64032268" target="blank">Click for full article</a></li>
+			</div>
+
+
+
+		</div>
+
+
+		{% comment %} newsletter subscribe to page letter {% endcomment %}
+		<div class = "subscribe">
+			<div class = "top_subscribe">
+				<h1 class="subscribe_title">Subscribe for daily updates.</h1>
+				<p class="subscribe_email">Email*</p>
+				<a href=# class="subscribe_email_bar">_____________________</a>
+				<br>
+				<br>
+				<br>
+				<br>
+				<center><button>Subscribe</button></center>
+			</div>
+			
+			{% comment %} bottom half of subscribe div {% endcomment %}
+			<div class="bottom_follow_ig">
+				<h1>Follow me on Instagram</h1>
+				<div class="collage">
+				</div>
+
+			</div>
+			
+
+		</div>
+
+
+
+
+
+
+		
+
+    </body>
+</html>
