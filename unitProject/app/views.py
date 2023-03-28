@@ -184,7 +184,8 @@ def templatesView(request, business_id):
         }
         return render(request, "template_3.html", context)
 
-            # return redirect("businesses")
+        # return redirect("businesses")
+
 
 #
 allTemplates = {}
@@ -233,23 +234,24 @@ def medical_office_html(request):
 
 # ====== below needs to be implemented=======#
 @login_required(login_url="login")
-def UpdateBusiness(request, business_id):
-    business = businessTemplateDatabase.objects.get(id=business_id)
+def UpdateBusiness(request, business.id):
+    business = get_object_or_404(businessTemplateDatabase, id=business.id)
     form = BusinessForm(instance=business)
 
     if request.method == "POST":
         form = BusinessForm(request.POST, instance=business)
         if form.is_valid():
             form.save()
-            return redirect("home")
+            messages.success(request, "Business updated successfully.")
+            return redirect("businesses")
 
     context = {"form": form}
-    return render(request, "update_business.html", context)
+    return render(request, "create_business.html", context)
 
 
 @login_required(login_url="login")
-def UpdateBusinessContactInfo(request, contact_id):
-    business_contact = businessContactInfoDatabase.objects.get(id=contact_id)
+def UpdateBusinessContactInfo(request, contact.id):
+    business_contact = businessContactInfoDatabase.objects.get(id=contact.id)
     form = BusinessContactInfoForm(instance=business_contact)
 
     if request.method == "POST":
@@ -263,19 +265,16 @@ def UpdateBusinessContactInfo(request, contact_id):
 
 
 @login_required(login_url="login")
-def DeleteBusiness(request, business_id):
-    business = businessTemplateDatabase.objects.get(id=business_id)
-    if request.method == "POST":
-        business.delete()
-        return redirect("home")
-
-    context = {"item": business}
-    return render(request, "delete_business.html", context)
+def DeleteBusiness(request, business.id):
+    business = get_object_or_404(businessTemplateDatabase, id=business.id)
+    business.delete()
+    messages.success(request, "Business deleted successfully.")
+    return redirect("businesses")
 
 
 @login_required(login_url="login")
-def DeleteBusinessContactInfo(request, contact_id):
-    business_contact = businessTemplateDatabase.objects.get(id=contact_id)
+def DeleteBusinessContactInfo(request, contact.id):
+    business_contact = businessTemplateDatabase.objects.get(id=contact.id)
     if request.method == "POST":
         business_contact.delete()
         return redirect("home")
