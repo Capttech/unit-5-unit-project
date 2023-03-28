@@ -49,6 +49,18 @@ body {
     color: black;
 }
 
+#id_email {
+    color: black;
+}
+
+#id_phoneNumber {
+    color: black;
+}
+
+#id_address {
+    color: black;
+}
+
 .form_title {
     font-size: 1.5em;
 }
@@ -156,6 +168,21 @@ select option {
 .link a {
     text-decoration: none;
     /* font-size: 1.2em; */
+}
+
+.submit {
+    font-size: large;
+    width: auto;
+    height: 50px;
+    background-color: #ff00de;
+    color: whitesmoke;
+    border-radius: 25px;
+    transition: box-shadow .5s ease-in-out;
+    padding: 0 1em;
+}
+
+.submit:hover {
+    box-shadow: 0 0 20px #ff00de;
 }
 
 input {

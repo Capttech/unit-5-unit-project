@@ -162,7 +162,7 @@ def templatesView(request, business_id):
     template_choice = business.template_choice
 
     if template_choice == "medical_office":
-        context = {"medical_office": "Medical Office" "business": business}
+        context = {"medical_office": "Medical Office", "business": business}
         return render(request, "medical_office.html", context)
     elif template_choice == "Blog":
         context = {
