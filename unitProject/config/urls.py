@@ -22,25 +22,27 @@ urlpatterns = [
         name="contact_info",
     ),
     path("medical_office/", medical_office_html, name="medical_office"),
-    path("medical_office/medical_office/home/", homeView, name="home"),
     path("blog/", BlogPull, name="blog"),
-    path(
-        "view_business/<str:tempName>/<str:webId>/",
-        view_user_business,
-        name="view_business",
-    ),
     # trying to see blog page template
     path("business/<int:business_id>/templates/", templatesView, name="templates"),
     # ------Drew's work on URLs for Bryan------#
-    path("updatebusiness/<str:business_id>/", UpdateBusiness, name="update_business"),
     path(
-        "updatebusinesscontactinfo/<str:business_id>/",
+        "updatebusiness/",
+        UpdateBusiness,
+        name="update_business",
+    ),
+    path(
+        "updatebusinesscontactinfo/",
         UpdateBusinessContactInfo,
         name="update_contact_info",
     ),
-    path("deletebusiness/<str:contact_id>/", DeleteBusiness, name="delete_business"),
     path(
-        "deletebusinesscontactinfo/<str:contact_id>/",
+        "deletebusiness/",
+        DeleteBusiness,
+        name="delete_business",
+    ),
+    path(
+        "deletebusinesscontactinfo/",
         DeleteBusinessContactInfo,
         name="delete_business_contact_info",
     ),
