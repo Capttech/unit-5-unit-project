@@ -2,7 +2,7 @@
 <<<<<<< Updated upstream
 <div class="container">
   <div class="card">
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST">
       {% csrf_token %} {% for field in form %}
       <div class="form_field">{{field.label}} {{field}}</div>
       {% endfor %}
