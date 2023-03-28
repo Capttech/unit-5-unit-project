@@ -28,7 +28,6 @@ urlpatterns = [
         name="view_business",
     ),
     # trying to see blog page template
-<<<<<<< Updated upstream
     path("business/<int:business_id>/templates/", templatesView, name="templates"),
     # ------Drew's work on URLs for Bryan------#
     path("updatebusiness/", UpdateBusiness, name="update_business"),
@@ -44,9 +43,6 @@ urlpatterns = [
         name="delete_business_contact_info",
     ),
     # --------End of Drew's work---------#
-=======
-    path("templates/", templatesView, name="templates"),
->>>>>>> Stashed changes
 ]
 
 
