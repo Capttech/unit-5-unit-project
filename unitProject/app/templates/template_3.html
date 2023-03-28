@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>-- Restaurant Name --</title>
+    <link rel="stylesheet" href="{% static 'phillipstyles.css' %}" />
+  </head>
+  <body>
+    <div class="header">
+      <span class="head">-- RESTAURANT NAME --</span>
+    </div>
+    <div class="info">
+      <img src="{% static 'images/restaurant.jpg' %}" alt="restaurant" />
+      <p>This is the first sample block of text for -- YOUR RESTAURANT --</p>
+    </div>
+    <div class="info2">
+      <img src="{% static 'images/kitchen.jpg' %}" alt="kitchen" />
+      <p>This is the second sample block of text for -- YOUR RESTAURANT --</p>
+    </div>
+    <div class="info">
+      <img src="{% static 'images/waitress.jpg' %}" alt="waitress" />
+      <p>This is the third sample block of text for -- YOUR RESTAURANT --</p>
+    </div>
+    <div class="links">
+      <a class="button" href="#" target="blank">Our Menu</a>
+      <a class="button" href="#" target="blank">Locations</a>
+    </div>
+    <div class="band">
+      <div class="members">
+        <span class="member">
+          <img src="{% static 'images/wine.jpg' %}" alt="wine" />
+          <p>Fine wine</p>
+        </span>
+        <span class="member">
+          <img src="{% static 'images/steak.jpg' %}" alt="steak" />
+          <p>Choice cuts</p>
+        </span>
+        <span class="member">
+          <img src="{% static 'images/chicken.jpg' %}" alt="chicken" />
+          <p>Good grills</p>
+        </span>
+        <span class="member">
+          <img src="{% static 'images/cake.jpg' %}" alt="cake" />
+          <p>Sweet treats</p>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

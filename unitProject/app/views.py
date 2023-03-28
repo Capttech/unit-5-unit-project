@@ -184,7 +184,8 @@ def templatesView(request, business_id):
         }
         return render(request, "template_3.html", context)
 
-            # return redirect("businesses")
+        # return redirect("businesses")
+
 
 #
 allTemplates = {}
@@ -282,3 +283,10 @@ def DeleteBusinessContactInfo(request, contact_id):
 
     context = {"item": business_contact}
     return render(request, "delete_business_contact_info.html", context)
+
+
+# phillip
+
+
+def restaurantView(request):
+    return render(request, "template_3.html")
