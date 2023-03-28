@@ -19,6 +19,7 @@
     </div>
     <div class="info">
       <img src="{% static 'images/waitress.jpg' %}" alt="waitress" />
+      <p>{{business.missionStatement}}</p>
       {% for contact in business_contact %}
       <p>
         Address: {{contact.address}}<br />

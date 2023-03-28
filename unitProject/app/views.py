@@ -67,7 +67,7 @@ def LoginPage(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                messages.success(request, "{{username}} has been created")
+                messages.success(request, "Welcome" + username)
                 login(request, user)
                 return redirect("home")
 
@@ -171,14 +171,14 @@ def templatesView(request, business_id):
         return render(request, "medical_office.html", context)
     elif template_choice == "Blog":
         context = {
-            "Blog": "This is data for Template 2",
+            "Blog": "Blog",
             "business": business,
             "business_contact": business_contact,
         }
         return render(request, "Nav_bar.html", context)
     else:
         context = {
-            "Restaurant": "This is data for Template 3",
+            "Restaurant": "Restaurant",
             "business": business,
             "business_contact": business_contact,
         }
