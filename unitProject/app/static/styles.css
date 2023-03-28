@@ -15,7 +15,11 @@ body {
 .card{
     
     border-radius: 5px;
+<<<<<<< Updated upstream
     box-shadow: 5px 5px 5px rgb(211, 34, 102);
+=======
+    box-shadow: 10px 10px 5px #333;
+>>>>>>> Stashed changes
     background-color: rgb(103, 54, 124);
     text-align: center;
     padding: 4em;
@@ -48,6 +52,19 @@ body {
 .form_input {
     color: black;
 }
+<<<<<<< Updated upstream
+
+#id_email {
+    color: black;
+}
+
+#id_phoneNumber {
+    color: black;
+}
+
+#id_address {
+    color: black;
+}
 
 .form_title {
     font-size: 1.5em;
@@ -64,6 +81,8 @@ input[type="email"] {
 select option {
     color: black;
 }
+=======
+>>>>>>> Stashed changes
 
 .get_started_card {
     width: 100%;
@@ -76,6 +95,7 @@ select option {
     position: absolute;
     top: 30%;
     right: 35%;
+<<<<<<< Updated upstream
     height: 70px;
     width: 220px;
     background-color: rgb(211, 34, 102);
@@ -87,19 +107,39 @@ select option {
 
 .get_started:hover {
     box-shadow: 0 0 60px #ff00de;
+=======
+    height: 100px;
+    width: 200px;
+    background-color: rgb(103, 54, 124);
+    font-size: 2em;
+    border-radius: 10px;
+    cursor: pointer;
+
+    
+    
+    
+>>>>>>> Stashed changes
 }
 
 .get_started a {
     text-decoration: none;
+<<<<<<< Updated upstream
    
     text-align: center;
     
+=======
+    height: 100px;
+    width: 200px;
+    text-align: center;
+    padding: 0;
+>>>>>>> Stashed changes
     pointer-events: auto;
     
 }
 
 .header {
     height: 1.2em;
+<<<<<<< Updated upstream
     /* width: 100%; */
     font-size: 3em;
     font-weight: 700;
@@ -111,6 +151,14 @@ select option {
     font-size: larger;
     margin: 0, 40px;
     padding-left: 2em;
+=======
+    width: 100%;
+    font-size: 3em;
+}
+
+.Welcome {
+    font-size: large;
+>>>>>>> Stashed changes
 }
 .navb {
     background-color: rgb(103, 54, 124);
@@ -121,6 +169,7 @@ select option {
     color: whitesmoke;
     text-decoration: none;
 }
+<<<<<<< Updated upstream
 
 .med_link {
     font-size: large;
@@ -158,6 +207,21 @@ select option {
     /* font-size: 1.2em; */
 }
 
+.submit {
+    font-size: large;
+    width: auto;
+    height: 50px;
+    background-color: #ff00de;
+    color: whitesmoke;
+    border-radius: 25px;
+    transition: box-shadow .5s ease-in-out;
+    padding: 0 1em;
+}
+
+.submit:hover {
+    box-shadow: 0 0 20px #ff00de;
+}
+
 input {
     color: white;
 }
@@ -180,13 +244,44 @@ input {
 .profile_pic {
     height: 10em;
     border-radius: 5em;
+=======
+ 
+.link {
+    width: 130px;
+    height: 50px;
+    background-color: rgb(211, 34, 102);
+    color: black;
+    border-radius: 10px;
+    
+}
+
+.link a {
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.splash_div {
+    width: 100%;
+    text-align: center;
+
+}
+
+.splash_statement {
+    width: 85%; 
+  display: inline-block;
+
+>>>>>>> Stashed changes
 }
 
 
 
 /* not sure if we need these */
 
+<<<<<<< Updated upstream
 /* .nav_menu {
+=======
+.nav_menu {
+>>>>>>> Stashed changes
     overflow: hidden;
     background-color: rgb(255, 0, 0);
     background-size: cover;

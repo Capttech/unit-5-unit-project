@@ -14,7 +14,12 @@ from django.conf import settings
 import os
 from django.contrib import messages
 from django.views.generic import DetailView
+<<<<<<< Updated upstream
 from django.http import HttpResponseNotFound
+=======
+
+
+>>>>>>> Stashed changes
 from django.contrib import messages
 from django.template.loader import get_template, render_to_string
 
@@ -67,7 +72,7 @@ def LoginPage(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                messages.success(request, username + "has been created")
+                messages.success(request, "{{username}} has been created")
                 login(request, user)
                 return redirect("home")
 
@@ -101,6 +106,28 @@ def AccountSettings(request):
     return render(request, "edit_profile.html", context)
 
 
+<<<<<<< Updated upstream
+def businessesView(request):
+    profile = request.user.profile
+    renderBusiness = []
+    businesses = businessTemplateDatabase.objects.all()
+    for business in businesses:
+        if business.profile == profile:
+            renderBusiness.append(business)
+    business_contact = businessContactInfoDatabase.objects.filter(
+        business__in=businesses
+    )
+    context = {"businesses": renderBusiness, "business_contact": business_contact}
+    return render(request, "template.html", context)
+
+
+=======
+# the standard home view -Phillip
+def homeView(request):
+    return render(request, "home.html")
+
+
+@login_required(login_url="login")
 def businessesView(request):
     businesses = businessTemplateDatabase.objects.all()
     business_contact = businessContactInfoDatabase.objects.filter(
@@ -110,6 +137,30 @@ def businessesView(request):
     return render(request, "template.html", context)
 
 
+def templatesView(request):
+    context = {"allTemplates": allTemplates}
+    return render(request, "templates.html", context)
+
+
+def show_user_business(request, tempName):
+    webId = request.GET.get("id")
+    if tempName in allTemplates:
+        return view_user_business(request, allTemplates[tempName, webId])
+    else:
+        # handle invalid template name error
+        pass
+
+
+# -----Drew's work-----#
+@login_required(login_url="login")
+def medical_office_html(request):
+    return render(request, "medical_office.html")
+
+
+# ------End of Drew's work-------#
+
+
+>>>>>>> Stashed changes
 @login_required(login_url="login")
 def create_business(request):
     profile = request.user.profile
@@ -129,6 +180,7 @@ def create_business(request):
     return render(request, "create_business.html", context)
 
 
+<<<<<<< Updated upstream
 @login_required(login_url="login")
 def create_business_contact_info(request, business_id):
     businesses = businessTemplateDatabase.objects.filter(name=request.user.profile.user)
@@ -147,6 +199,9 @@ def create_business_contact_info(request, business_id):
     return render(request, "contact_info.html", {"form": form, "business": business})
 
 
+# ====everything above this line works==========#
+
+
 def templatesView(request, business_id):
     try:
         business = businessTemplateDatabase.objects.get(id=business_id)
@@ -159,11 +214,7 @@ def templatesView(request, business_id):
     template_choice = business.template_choice
 
     if template_choice == "medical_office":
-        context = {
-            "medical_office": "Medical Office",
-            "business": business,
-            "business_contact": business_contact,
-        }
+        context = {"medical_office": "Medical Office", "business": business}
         return render(request, "medical_office.html", context)
     elif template_choice == "Blog":
         context = {
@@ -179,11 +230,48 @@ def templatesView(request, business_id):
             "business_contact": business_contact,
         }
         return render(request, "template_3.html", context)
+=======
+allTemplates = {}
+allTemplates["drew"] = "medical_office"
+allTemplates["jarvis"] = "blog"
 
 
-# ====everything above this line works==========#
+@login_required(login_url="login")
+def view_user_business(request, tempName, webId):
+    allGeneratedSites = generatedWebsites.objects.all()
+    allCreatedTemplates = businessTemplateDatabase.objects.all()
+    foundTemplateId = ""
+    foundTemplateData = []
+
+    for site in allGeneratedSites:
+        if site.webId == webId:
+            foundTemplateId = site.templateId
+
+    for template in allCreatedTemplates:
+        if template.id == foundTemplateId:
+            foundTemplateData = template
+
+    if foundTemplateId == "":
+        return render(f"{allTemplates[tempName]}.html")
+    else:
+        return render(f"{allTemplates[tempName]}.html", foundTemplateData)
 
 
+@login_required(login_url="login")
+def create_business_contact_info(request, business_id):
+    businesses = businessTemplateDatabase.objects.filter(name=request.user.profile.user)
+    business = businessTemplateDatabase.objects.get(id=business_id)
+    if request.method == "POST":
+        form = BusinessContactInfoForm(request.POST)
+        if form.is_valid():
+            contact_info = form.save(commit=False)
+            contact_info.business = business
+            contact_info.save()
+>>>>>>> Stashed changes
+
+            return redirect("businesses")
+
+<<<<<<< Updated upstream
 #
 allTemplates = {}
 allTemplates["drew"] = "medical_office"
@@ -215,6 +303,13 @@ def view_user_business(request, tempName, webId):
             return render(f"{allTemplates[tempName]}.html", foundTemplateData)
 
 
+=======
+    else:
+        form = BusinessContactInfoForm()
+    return render(request, "contact_info.html", {"form": form, "business": business})
+
+
+>>>>>>> Stashed changes
 # test to see blog
 def BlogPull(request):
     return render(request, "Nav_bar.html")
