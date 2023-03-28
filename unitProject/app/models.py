@@ -27,7 +27,7 @@ class businessTemplateDatabase(models.Model):
     CHOICES = (
         ("medical_office", "Medical Office"),
         ("Blog", "Blog"),
-        ("Phillip", "Phillip"),
+        ("Restaurant", "Restaurant"),
     )
     templateId = models.TextField()
     name = models.TextField(max_length=255)

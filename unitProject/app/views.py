@@ -178,44 +178,13 @@ def templatesView(request, business_id):
         return render(request, "Nav_bar.html", context)
     else:
         context = {
-            "Phillip": "This is data for Template 3",
+            "Restaurant": "This is data for Template 3",
             "business": business,
             "business_contact": business_contact,
         }
         return render(request, "template_3.html", context)
 
         # return redirect("businesses")
-
-
-#
-allTemplates = {}
-allTemplates["drew"] = "medical_office"
-allTemplates["jarvis"] = "blog"
-
-
-@login_required(login_url="login")
-def view_user_business(request, tempName, webId):
-    if not tempName:
-        # if tempName is empty, return a 404 error response
-        return HttpResponseNotFound()
-    else:
-        allGeneratedSites = generatedWebsites.objects.all()
-        allCreatedTemplates = businessTemplateDatabase.objects.all()
-        foundTemplateId = ""
-        foundTemplateData = []
-
-        for site in allGeneratedSites:
-            if site.webId == webId:
-                foundTemplateId = site.templateId
-
-        for template in allCreatedTemplates:
-            if template.id == foundTemplateId:
-                foundTemplateData = template
-
-        if foundTemplateId == "":
-            return render(f"{allTemplates[tempName]}.html")
-        else:
-            return render(f"{allTemplates[tempName]}.html", foundTemplateData)
 
 
 # test to see blog
@@ -229,62 +198,62 @@ def medical_office_html(request):
     return render(request, "medical_office.html")
 
 
+def restaurantView(request):
+    return render(request, "template_3.html")
+
+
 # ------End of Drew's work-------#
 
 
 # ====== below needs to be implemented=======#
-@login_required(login_url="login")
-def UpdateBusiness(request, business.id):
-    business = get_object_or_404(businessTemplateDatabase, id=business.id)
-    form = BusinessForm(instance=business)
+# @login_required(login_url="login")
+# def UpdateBusiness(request, business.id):
+#     business = get_object_or_404(businessTemplateDatabase, id=business.id)
+#     form = BusinessForm(instance=business)
 
-    if request.method == "POST":
-        form = BusinessForm(request.POST, instance=business)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Business updated successfully.")
-            return redirect("businesses")
+#     if request.method == "POST":
+#         form = BusinessForm(request.POST, instance=business)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, "Business updated successfully.")
+#             return redirect("businesses")
 
-    context = {"form": form}
-    return render(request, "create_business.html", context)
-
-
-@login_required(login_url="login")
-def UpdateBusinessContactInfo(request, contact.id):
-    business_contact = businessContactInfoDatabase.objects.get(id=contact.id)
-    form = BusinessContactInfoForm(instance=business_contact)
-
-    if request.method == "POST":
-        form = BusinessContactInfoForm(request.POST, instance=business_contact)
-        if form.is_valid():
-            form.save()
-            return redirect("home")
-
-    context = {"form": form}
-    return render(request, "update_business_contact_info.html", context)
+#     context = {"form": form}
+#     return render(request, "create_business.html", context)
 
 
-@login_required(login_url="login")
-def DeleteBusiness(request, business.id):
-    business = get_object_or_404(businessTemplateDatabase, id=business.id)
-    business.delete()
-    messages.success(request, "Business deleted successfully.")
-    return redirect("businesses")
+# @login_required(login_url="login")
+# def UpdateBusinessContactInfo(request, contact.id):
+#     business_contact = businessContactInfoDatabase.objects.get(id=contact.id)
+#     form = BusinessContactInfoForm(instance=business_contact)
+
+#     if request.method == "POST":
+#         form = BusinessContactInfoForm(request.POST, instance=business_contact)
+#         if form.is_valid():
+#             form.save()
+#             return redirect("home")
+
+#     context = {"form": form}
+#     return render(request, "update_business_contact_info.html", context)
 
 
-@login_required(login_url="login")
-def DeleteBusinessContactInfo(request, contact.id):
-    business_contact = businessTemplateDatabase.objects.get(id=contact.id)
-    if request.method == "POST":
-        business_contact.delete()
-        return redirect("home")
+# @login_required(login_url="login")
+# def DeleteBusiness(request, business.id):
+#     business = get_object_or_404(businessTemplateDatabase, id=business.id)
+#     business.delete()
+#     messages.success(request, "Business deleted successfully.")
+#     return redirect("businesses")
 
-    context = {"item": business_contact}
-    return render(request, "delete_business_contact_info.html", context)
+
+# @login_required(login_url="login")
+# def DeleteBusinessContactInfo(request, contact.id):
+#     business_contact = businessTemplateDatabase.objects.get(id=contact.id)
+#     if request.method == "POST":
+#         business_contact.delete()
+#         return redirect("home")
+
+#     context = {"item": business_contact}
+#     return render(request, "delete_business_contact_info.html", context)
 
 
 # phillip
-
-
-def restaurantView(request):
-    return render(request, "template_3.html")

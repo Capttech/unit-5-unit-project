@@ -26,26 +26,26 @@ urlpatterns = [
     # trying to see blog page template
     path("business/<int:business_id>/templates/", templatesView, name="templates"),
     # ------Drew's work on URLs for Bryan------#
-    path(
-        "updatebusiness/",
-        UpdateBusiness,
-        name="update_business",
-    ),
-    path(
-        "updatebusinesscontactinfo/",
-        UpdateBusinessContactInfo,
-        name="update_contact_info",
-    ),
-    path(
-        "deletebusiness/",
-        DeleteBusiness,
-        name="delete_business",
-    ),
-    path(
-        "deletebusinesscontactinfo/",
-        DeleteBusinessContactInfo,
-        name="delete_business_contact_info",
-    ),
+    # path(
+    #     "updatebusiness/",
+    #     UpdateBusiness,
+    #     name="update_business",
+    # ),
+    # path(
+    #     "updatebusinesscontactinfo/",
+    #     UpdateBusinessContactInfo,
+    #     name="update_contact_info",
+    # ),
+    # path(
+    #     "deletebusiness/",
+    #     DeleteBusiness,
+    #     name="delete_business",
+    # ),
+    # path(
+    #     "deletebusinesscontactinfo/",
+    #     DeleteBusinessContactInfo,
+    #     name="delete_business_contact_info",
+    # ),
     # --------End of Drew's work---------#
 ]
 
