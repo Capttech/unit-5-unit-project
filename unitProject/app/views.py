@@ -67,7 +67,7 @@ def LoginPage(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                messages.success(request, username + "has been created")
+                messages.success(request, "{{username}} has been created")
                 login(request, user)
                 return redirect("home")
 
@@ -147,6 +147,9 @@ def create_business_contact_info(request, business_id):
     return render(request, "contact_info.html", {"form": form, "business": business})
 
 
+# ====everything above this line works==========#
+
+
 def templatesView(request, business_id):
     try:
         business = businessTemplateDatabase.objects.get(id=business_id)
@@ -159,11 +162,7 @@ def templatesView(request, business_id):
     template_choice = business.template_choice
 
     if template_choice == "medical_office":
-        context = {
-            "medical_office": "Medical Office",
-            "business": business,
-            "business_contact": business_contact,
-        }
+        context = {"medical_office": "Medical Office" "business": business}
         return render(request, "medical_office.html", context)
     elif template_choice == "Blog":
         context = {
@@ -179,9 +178,6 @@ def templatesView(request, business_id):
             "business_contact": business_contact,
         }
         return render(request, "template_3.html", context)
-
-
-# ====everything above this line works==========#
 
 
 #
