@@ -193,7 +193,7 @@ def create_business_contact_info(request, business_id):
             contact_info.business = business
             contact_info.save()
 
-            return redirect("businesses")
+            return redirect("http://127.0.0.1:8000/businesses/?id=" + generateUserId())
 
     else:
         form = BusinessContactInfoForm()
