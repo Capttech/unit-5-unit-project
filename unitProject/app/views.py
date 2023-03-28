@@ -227,3 +227,56 @@ def medical_office_html(request):
 
 
 # ------End of Drew's work-------#
+
+
+# ====== below needs to be implemented=======#
+@login_required(login_url="login")
+def UpdateBusiness(request, business_id):
+    business = businessTemplateDatabase.objects.get(id=business_id)
+    form = BusinessForm(instance=business)
+
+    if request.method == "POST":
+        form = BusinessForm(request.POST, instance=business)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+
+    context = {"form": form}
+    return render(request, "update_business.html", context)
+
+
+@login_required(login_url="login")
+def UpdateBusinessContactInfo(request, contact_id):
+    business_contact = businessContactInfoDatabase.objects.get(id=contact_id)
+    form = BusinessContactInfoForm(instance=business_contact)
+
+    if request.method == "POST":
+        form = BusinessContactInfoForm(request.POST, instance=business_contact)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+
+    context = {"form": form}
+    return render(request, "update_business_contact_info.html", context)
+
+
+@login_required(login_url="login")
+def DeleteBusiness(request, business_id):
+    business = businessTemplateDatabase.objects.get(id=business_id)
+    if request.method == "POST":
+        business.delete()
+        return redirect("home")
+
+    context = {"item": business}
+    return render(request, "delete_business.html", context)
+
+
+@login_required(login_url="login")
+def DeleteBusinessContactInfo(request, contact_id):
+    business_contact = businessTemplateDatabase.objects.get(id=contact_id)
+    if request.method == "POST":
+        business_contact.delete()
+        return redirect("home")
+
+    context = {"item": business_contact}
+    return render(request, "delete_business_contact_info.html", context)
