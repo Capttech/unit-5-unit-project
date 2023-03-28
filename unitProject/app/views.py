@@ -285,24 +285,26 @@ def restaurantView(request):
 #     return render(request, "update_business_contact_info.html", context)
 
 
+@login_required(login_url="login")
+def DeleteBusiness(request, business_id):
+    business = businessTemplateDatabase.objects.get(id=business_id)
+    if request.method == "POST":
+        business.delete()
+        messages.success(request, "Business deleted successfully.")
+        return redirect("businesses")
+    return render(request, "delete_business.html", {"business": business})
+
+
+# cant get this function to work
 # @login_required(login_url="login")
-# def DeleteBusiness(request, business_id):
-#     business = businessTemplateDatabase.objects.get(id=business_id)
-#     if request.method == "POST":
-#         business.delete()
-#         messages.success(request, "Business deleted successfully.")
-#         return redirect("businesses")
-
-
-#     context = {"item": business}
-#     return render(request, "delete.html", context)
-
-# @login_required(login_url="login")
-# def DeleteBusinessContactInfo(request, contact.id):
-#     business_contact = businessContactInfoDatabase.objects.get(id=contact.id)
+# def DeleteBusinessContactInfo(request, contact_id):
+#     business_contact = businessContactInfoDatabase.objects.get(id=contact_id)
 #     if request.method == "POST":
 #         business_contact.delete()
-#         return redirect("home")
+#         return redirect("businesses")
 
-#     context = {"item": business_contact}
-#     return render(request, "delete_business_contact_info.html", context)
+#     return render(
+#         request,
+#         "delete_business_contact_info.html",
+#         {"business_contact": business_contact},
+#     )

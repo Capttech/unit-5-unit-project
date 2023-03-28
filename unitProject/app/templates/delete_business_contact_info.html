@@ -6,7 +6,7 @@
       <p>Are you sure you want to delete "{{business_contact}}"</p>
       <form
         class="form_field"
-        action="{% url 'delete_order' contact.id%}"
+        action="{% url 'delete_business_contact_info' business_contact.id %}"
         method="POST"
       >
         {% csrf_token %}

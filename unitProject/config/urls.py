@@ -27,22 +27,22 @@ urlpatterns = [
     path("business/<int:business_id>/templates/", templatesView, name="templates"),
     # ------Drew's work on URLs for Bryan------#
     # path(
-    #     "updatebusiness/",
+    #     "updatebusiness/<int:business>/",
     #     UpdateBusiness,
     #     name="update_business",
     # ),
     # path(
-    #     "updatebusinesscontactinfo/",
+    #     "updatebusinesscontactinfo/<str:contact_id>",
     #     UpdateBusinessContactInfo,
     #     name="update_contact_info",
     # ),
+    path(
+        "deletebusiness/<int:business_id>/",
+        DeleteBusiness,
+        name="delete_business",
+    ),
     # path(
-    #     "deletebusiness/",
-    #     DeleteBusiness,
-    #     name="delete_business",
-    # ),
-    # path(
-    #     "deletebusinesscontactinfo/",
+    #     "deletebusinesscontactinfo/<int:contact_id>/",
     #     DeleteBusinessContactInfo,
     #     name="delete_business_contact_info",
     # ),

@@ -23,7 +23,6 @@
         <p>Phone Number: {{ contact.phoneNumber }}</p>
         <p>Address: {{ contact.address }}</p>
         {% endif %} {% endfor %}
-
         <button class="link">
           <a href="{% url 'contact_info' business.id %}">Add Contact Info</a>
         </button>
@@ -36,12 +35,16 @@
           You haven't created a website for this business yet.
         </p>
         {% else %}
+
         <button class="link">
-          <a href="{% url 'templates' business.id%}">View My Website</a></button
-        >{% endif %}
+          <a href="{% url 'delete_business' business.id %}">Delete Business</a>
+        </button>
+        <button class="link">
+          <a href="{% url 'templates' business.id%}">View My Website</a>
+        </button>
       </div>
     </div>
-    {% endfor %} {% endif %}
+    {% endif %} {% endfor %} {% endif %}
   </div>
   {% endblock %}
 </div>

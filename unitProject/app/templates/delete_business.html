@@ -6,12 +6,12 @@
       <p>Are you sure you want to delete "{{business}}"</p>
       <form
         class="form_field"
-        action="{% url 'delete_order' business.id%}"
+        action="{% url 'delete_business' business.id %}"
         method="POST"
       >
         {% csrf_token %}
-        <a class="link" href="{% url 'home' %}">Cancel</a>
-        <input class="submit" type="submit" name="confirm" />
+        <a class="submit" href="{% url 'businesses' %}">Cancel</a>
+        <input class="submit" type="submit" value="Confirm" name="confirm" />
       </form>
     </div>
   </div>
