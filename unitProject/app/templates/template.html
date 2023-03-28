@@ -27,6 +27,16 @@
         <button class="link">
           <a href="{% url 'contact_info' business.id %}">Add Contact Info</a>
         </button>
+        <button class="link">
+          <a href="{% url 'deletebusinesscontactinfo' contact.id %}"
+            >Delete Contact</a
+          >
+        </button>
+        <button class="link">
+          <a href="{% url 'updatebusinesscontactinfo' contact.id %}"
+            >Update Contact</a
+          >
+        </button>
         {% else %}
         <button class="link">
           <a href="{% url 'contact_info' business.id %}">Add Contact Info</a>
@@ -36,6 +46,12 @@
           You haven't created a website for this business yet.
         </p>
         {% else %}
+        <button class="link">
+          <a href="{% url 'deletebusiness' business.id %}">Delete Business</a>
+        </button>
+        <button class="link">
+          <a href="{% url 'updatebusiness' business.id %}">Update Business</a>
+        </button>
         <button class="link">
           <a href="{% url 'templates' business.id%}">View My Website</a></button
         >{% endif %}
