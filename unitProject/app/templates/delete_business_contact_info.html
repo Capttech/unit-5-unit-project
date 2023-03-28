@@ -1,0 +1,19 @@
+{% extends 'home.html' %} {% load static %} {% block content %}
+<br />
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <p>Are you sure you want to delete "{{business_contact}}"</p>
+      <form
+        class="form_field"
+        action="{% url 'delete_order' contact.id%}"
+        method="POST"
+      >
+        {% csrf_token %}
+        <a class="link" href="{% url 'home' %}">Cancel</a>
+        <input class="submit" type="submit" name="confirm" />
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

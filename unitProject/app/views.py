@@ -102,11 +102,16 @@ def AccountSettings(request):
 
 
 def businessesView(request):
+    profile = request.user.profile
+    renderBusiness = []
     businesses = businessTemplateDatabase.objects.all()
+    for business in businesses:
+        if business.profile == profile:
+            renderBusiness.append(business)
     business_contact = businessContactInfoDatabase.objects.filter(
         business__in=businesses
     )
-    context = {"businesses": businesses, "business_contact": business_contact}
+    context = {"businesses": renderBusiness, "business_contact": business_contact}
     return render(request, "template.html", context)
 
 
